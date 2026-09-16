@@ -1,0 +1,75 @@
+name: Release
+
+# Push a tag like v1.2.3 to build the mod and publish it as a GitHub Release,
+# with release notes generated automatically from the commits/PRs since the
+# previous tag. "workflow_dispatch" lets you also trigger it by hand from the
+# Actions tab, e.g. to rebuild a release without pushing a new tag.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to build and release (e.g. v1.2.3)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "name=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.tag.outputs.name }}
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Derive mod version from tag
+        id: version
+        run: |
+          version="${{ steps.tag.outputs.name }}"
+          version="${version#v}"
+          echo "mod_version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: ./gradlew build --no-daemon -Pmod_version=${{ steps.version.outputs.mod_version }}
+
+      - name: Locate built jar
+        id: jar
+        run: |
+          jar_path=$(find build/libs -maxdepth 1 -name '*.jar' ! -name '*-sources.jar' | head -n 1)
+          if [ -z "$jar_path" ]; then
+            echo "No jar found in build/libs" >&2
+            exit 1
+          fi
+          echo "path=$jar_path" >> "$GITHUB_OUTPUT"
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.name }}
+          name: Astronima ${{ steps.tag.outputs.name }}
+          generate_release_notes: true
+          files: ${{ steps.jar.outputs.path }}
