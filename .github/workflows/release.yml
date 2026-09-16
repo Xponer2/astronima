@@ -66,10 +66,52 @@ jobs:
           fi
           echo "path=$jar_path" >> "$GITHUB_OUTPUT"
 
+      # Marks how big a jump this release is, using an icon already in the mod's own
+      # assets (never generated) rather than inventing new art: astral_crystal for a
+      # major version bump, wrench for minor, sealant_patch (a real in-game item for
+      # patching a small leak) for a patch bump. The very first release counts as major.
+      - name: Pick a release-size icon from the mod's own assets
+        id: badge
+        run: |
+          current="${{ steps.version.outputs.mod_version }}"
+          prev_tag=$(git tag --sort=-v:refname | grep -Fxv "${{ steps.tag.outputs.name }}" | head -n 1 || true)
+
+          IFS='.' read -r cur_major cur_minor cur_patch <<< "$current"
+
+          if [ -z "$prev_tag" ]; then
+            kind="major"
+          else
+            prev="${prev_tag#v}"
+            IFS='.' read -r prev_major prev_minor prev_patch <<< "$prev"
+            if [ "$cur_major" -gt "$prev_major" ]; then
+              kind="major"
+            elif [ "$cur_major" -eq "$prev_major" ] && [ "$cur_minor" -gt "$prev_minor" ]; then
+              kind="minor"
+            else
+              kind="patch"
+            fi
+          fi
+
+          case "$kind" in
+            major) icon="astral_crystal.png"; label="Major release" ;;
+            minor) icon="wrench.png"; label="Minor release" ;;
+            patch) icon="sealant_patch.png"; label="Patch release" ;;
+          esac
+
+          icon_url="https://raw.githubusercontent.com/${{ github.repository }}/${{ steps.tag.outputs.name }}/src/main/resources/assets/astronima/textures/item/${icon}"
+          {
+            echo "<img src=\"${icon_url}\" width=\"64\" height=\"64\" style=\"image-rendering: pixelated;\" alt=\"${label}\">"
+            echo ""
+            echo "**${label}**"
+            echo ""
+          } > release-body.md
+          cat release-body.md
+
       - name: Create release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.tag.outputs.name }}
           name: Astronima ${{ steps.tag.outputs.name }}
+          body_path: release-body.md
           generate_release_notes: true
           files: ${{ steps.jar.outputs.path }}
