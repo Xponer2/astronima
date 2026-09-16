@@ -28,8 +28,3 @@ folder alongside a matching Curios build.
 ```
 
 The mod jar is written to `build/libs/`.
-
-## Releases
-
-Pushing a tag (`vX.Y.Z`) builds the mod and publishes it as a GitHub Release
-automatically, with release notes generated from the commits since the last tag.
