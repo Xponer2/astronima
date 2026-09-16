@@ -1,4 +1,6 @@
-# Astronima
+<p align="center">
+  <img src="src/main/resources/assets/astronima/textures/gui/title/logo.png" alt="Astronima" width="640">
+</p>
 
 A hardcore, real-science space survival mod for NeoForge. You wake up in the wreck of a
 crashed crew module on a hollow asteroid — no wood, no vanilla farming, no shortcuts.
