@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:gone_liquid",
+  "criteria": {
+    "stirling_cold": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:cryo_cooler"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A real Stirling cryocooler, cold enough to keep a dewar's own contents liquid indefinitely rather than boiling off.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:cryo_cooler"
+    },
+    "title": "Stirling Cold"
+  },
+  "requirements": [
+    [
+      "stirling_cold"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

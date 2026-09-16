@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "BCB",
+    "CPC",
+    "BCB"
+  ],
+  "result": {
+    "id": "astronima:titanium_cell"
+  }
+}

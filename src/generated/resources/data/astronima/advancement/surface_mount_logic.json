@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:kept_for_the_dark",
+  "criteria": {
+    "surface_mount_logic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:gate_and"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Six kinds of gate, five pixels square, wired into the same plane as the cable itself — real schematic logic, not a block per gate.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:gate_and"
+    },
+    "title": "Surface-Mount Logic"
+  },
+  "requirements": [
+    [
+      "surface_mount_logic"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

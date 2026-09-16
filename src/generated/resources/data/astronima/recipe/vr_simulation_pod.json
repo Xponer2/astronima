@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:salvaged_circuit",
+    "C": "astronima:control_board",
+    "F": "astronima:reinforced_frame"
+  },
+  "pattern": [
+    "CFC",
+    "FBF",
+    "CFC"
+  ],
+  "result": {
+    "id": "astronima:vr_simulation_pod"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "astronima:hull_plate",
+    "W": "astronima:paraffin_wax"
+  },
+  "pattern": [
+    "PPP",
+    "PWP",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:paraffin_thermal_mass"
+  }
+}

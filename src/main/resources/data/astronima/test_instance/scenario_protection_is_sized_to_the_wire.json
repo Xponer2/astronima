@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "astronima:scenario_protection_is_sized_to_the_wire",
+  "max_ticks": 200,
+  "required": true,
+  "setup_ticks": 1,
+  "structure": "minecraft:empty",
+  "padding": 8
+}

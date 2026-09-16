@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:ore_dressing",
+  "criteria": {
+    "beneficiation": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:iron_nickel_grains"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Native metal, sorted out by a magnet. It was already metal when you dug it up — meteoric iron was worked long before anyone could smelt.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:iron_nickel_grains"
+    },
+    "title": "Beneficiation"
+  },
+  "requirements": [
+    [
+      "beneficiation"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

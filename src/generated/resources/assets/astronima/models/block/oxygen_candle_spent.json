@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/oxygen_candle_bottom",
+    "side": "astronima:block/oxygen_candle_side_spent",
+    "top": "astronima:block/oxygen_candle_top"
+  }
+}

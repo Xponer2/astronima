@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "astronima:hull_plate",
+    "S": "astronima:mineral_salts"
+  },
+  "pattern": [
+    "PSP",
+    "PSP",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:power_cell"
+  }
+}

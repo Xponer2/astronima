@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/cargo_crate_bottom",
+    "side": "astronima:block/cargo_crate_side",
+    "top": "astronima:block/cargo_crate_top"
+  }
+}

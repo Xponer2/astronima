@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:control_board",
+    "astronima:salvaged_circuit"
+  ],
+  "result": {
+    "id": "astronima:basic_biomonitor_chip"
+  }
+}

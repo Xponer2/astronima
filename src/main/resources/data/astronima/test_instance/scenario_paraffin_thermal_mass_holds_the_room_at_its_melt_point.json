@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "astronima:scenario_paraffin_thermal_mass_holds_the_room_at_its_melt_point",
+  "max_ticks": 400,
+  "required": true,
+  "setup_ticks": 1,
+  "structure": "minecraft:empty",
+  "padding": 8
+}

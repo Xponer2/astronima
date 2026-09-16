@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "astronima:scenario_port_into_solid_rock",
+  "max_ticks": 100,
+  "required": true,
+  "setup_ticks": 1,
+  "structure": "minecraft:empty",
+  "padding": 8
+}

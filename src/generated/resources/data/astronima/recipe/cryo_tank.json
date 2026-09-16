@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "astronima:insulated_hull_plate",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PIP",
+    "I I",
+    "PIP"
+  ],
+  "result": {
+    "id": "astronima:cryo_tank"
+  }
+}

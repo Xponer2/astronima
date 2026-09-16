@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "astronima:block/alarm"
+    },
+    "lit=true": {
+      "model": "astronima:block/alarm_lit"
+    }
+  }
+}

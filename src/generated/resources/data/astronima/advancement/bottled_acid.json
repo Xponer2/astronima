@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:roasting_troilite",
+  "criteria": {
+    "bottled_acid": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:sulfuric_acid"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "The Contact Process, closed: SO2, real room oxygen, and the water vapor the loop next door already vents, all three or nothing.",
+    "frame": "challenge",
+    "icon": {
+      "id": "astronima:sulfuric_acid"
+    },
+    "title": "Bottled Acid"
+  },
+  "requirements": [
+    [
+      "bottled_acid"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

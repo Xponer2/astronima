@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polyethylene": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:polyethylene"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:acoustic_foam"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polyethylene"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:acoustic_foam"
+    ]
+  }
+}

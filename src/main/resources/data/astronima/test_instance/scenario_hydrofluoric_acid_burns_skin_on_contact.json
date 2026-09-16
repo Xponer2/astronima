@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "astronima:scenario_hydrofluoric_acid_burns_skin_on_contact",
+  "max_ticks": 400,
+  "required": true,
+  "setup_ticks": 1,
+  "structure": "minecraft:empty",
+  "padding": 8
+}

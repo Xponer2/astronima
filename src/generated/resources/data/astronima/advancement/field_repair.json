@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "field_repair": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:sealant_patch"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "The suit came out of the wreck broken in six ways. Each one is fixed separately, and each gives something back.",
+    "icon": {
+      "id": "astronima:sealant_patch"
+    },
+    "title": "Field Repair"
+  },
+  "requirements": [
+    [
+      "field_repair"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

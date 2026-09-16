@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:reinforced_frame"
+  },
+  "pattern": [
+    "BCB",
+    "PPP",
+    "BCB"
+  ],
+  "result": {
+    "id": "astronima:polymerizer"
+  }
+}

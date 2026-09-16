@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:downs_process",
+  "criteria": {
+    "salt_cake": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:hydrofluoric_acid"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Fluorite and sulfuric acid, reacted the way most of the world's real hydrofluoric acid still is made — the reaction takes real heat, not free heat.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:hydrofluoric_acid"
+    },
+    "title": "Salt Cake"
+  },
+  "requirements": [
+    [
+      "salt_cake"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

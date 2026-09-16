@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": "astronima:baked_silicate"
+  },
+  "pattern": [
+    "SS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "astronima:dose"
+  }
+}

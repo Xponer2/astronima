@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:water_split",
+  "criteria": {
+    "carbon_kept_solid": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:bosch_reactor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "The same CO2 problem, solved the other real way: an iron catalyst turns it into water and solid carbon instead of spending it as fuel gas.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:bosch_reactor"
+    },
+    "title": "Carbon Kept Solid"
+  },
+  "requirements": [
+    [
+      "carbon_kept_solid"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

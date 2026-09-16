@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "astronima:block/grab_rail",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "astronima:block/grab_rail"
+    },
+    "facing=south": {
+      "model": "astronima:block/grab_rail",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "astronima:block/grab_rail",
+      "y": 270
+    }
+  }
+}

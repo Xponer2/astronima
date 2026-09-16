@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astronima:block/storage_drive"
+    }
+  }
+}

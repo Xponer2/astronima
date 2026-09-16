@@ -1,0 +1,59 @@
+{
+  "variants": {
+    "axis=x,setting=0": {
+      "model": "astronima:block/gas_valve_0",
+      "y": 90
+    },
+    "axis=x,setting=1": {
+      "model": "astronima:block/gas_valve_1",
+      "y": 90
+    },
+    "axis=x,setting=2": {
+      "model": "astronima:block/gas_valve_2",
+      "y": 90
+    },
+    "axis=x,setting=3": {
+      "model": "astronima:block/gas_valve_3",
+      "y": 90
+    },
+    "axis=x,setting=4": {
+      "model": "astronima:block/gas_valve_4",
+      "y": 90
+    },
+    "axis=y,setting=0": {
+      "model": "astronima:block/gas_valve_0",
+      "x": 90
+    },
+    "axis=y,setting=1": {
+      "model": "astronima:block/gas_valve_1",
+      "x": 90
+    },
+    "axis=y,setting=2": {
+      "model": "astronima:block/gas_valve_2",
+      "x": 90
+    },
+    "axis=y,setting=3": {
+      "model": "astronima:block/gas_valve_3",
+      "x": 90
+    },
+    "axis=y,setting=4": {
+      "model": "astronima:block/gas_valve_4",
+      "x": 90
+    },
+    "axis=z,setting=0": {
+      "model": "astronima:block/gas_valve_0"
+    },
+    "axis=z,setting=1": {
+      "model": "astronima:block/gas_valve_1"
+    },
+    "axis=z,setting=2": {
+      "model": "astronima:block/gas_valve_2"
+    },
+    "axis=z,setting=3": {
+      "model": "astronima:block/gas_valve_3"
+    },
+    "axis=z,setting=4": {
+      "model": "astronima:block/gas_valve_4"
+    }
+  }
+}

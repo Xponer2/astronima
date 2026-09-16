@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "astronima:pure_nickel",
+    "S": "astronima:baked_silicate"
+  },
+  "pattern": [
+    "SSS",
+    "SPS",
+    "SSS"
+  ],
+  "result": {
+    "id": "astronima:wide_aperture_lens"
+  }
+}

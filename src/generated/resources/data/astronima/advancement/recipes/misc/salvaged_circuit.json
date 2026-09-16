@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chlorate_powder": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:chlorate_powder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:salvaged_circuit"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chlorate_powder"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:salvaged_circuit"
+    ]
+  }
+}

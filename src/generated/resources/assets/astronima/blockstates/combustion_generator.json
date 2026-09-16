@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astronima:block/combustion_generator"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "roasting_troilite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:troilite_roaster"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "4 FeS + 7 O2 -> 2 Fe2O3 + 4 SO2 — real oxygen spent on purpose, for the one gas nothing else in this mod produces yet.",
+    "icon": {
+      "id": "astronima:troilite_roaster"
+    },
+    "title": "Roasting Troilite"
+  },
+  "requirements": [
+    [
+      "roasting_troilite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

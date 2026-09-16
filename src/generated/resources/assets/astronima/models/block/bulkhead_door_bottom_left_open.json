@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "astronima:block/bulkhead_door_bottom",
+    "top": "astronima:block/bulkhead_door_top"
+  }
+}

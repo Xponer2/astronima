@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "astronima:scenario_a_real_edge_triggered_counter_actually_counts",
+  "max_ticks": 700,
+  "required": true,
+  "setup_ticks": 1,
+  "structure": "minecraft:empty",
+  "padding": 8
+}

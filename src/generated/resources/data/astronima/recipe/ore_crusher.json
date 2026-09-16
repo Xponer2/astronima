@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": "astronima:hammer_stone",
+    "S": "astronima:asteroid_rock"
+  },
+  "pattern": [
+    "S S",
+    "SHS",
+    "S S"
+  ],
+  "result": {
+    "id": "astronima:ore_crusher"
+  }
+}

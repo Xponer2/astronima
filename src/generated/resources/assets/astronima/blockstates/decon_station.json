@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "running=false": {
+      "model": "astronima:block/decon_station"
+    },
+    "running=true": {
+      "model": "astronima:block/decon_station_lit"
+    }
+  }
+}

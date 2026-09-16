@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "P": "astronima:hull_plate",
+    "R": "astronima:iron_rod"
+  },
+  "pattern": [
+    "PPP",
+    "IRI",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:dehumidifier"
+  }
+}

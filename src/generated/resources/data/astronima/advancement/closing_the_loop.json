@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:water_split",
+  "criteria": {
+    "closing_the_loop": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:sabatier_reactor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "CO2 + 4 H2 -> CH4 + 2 H2O over a nickel catalyst — the real reaction the ISS itself uses to turn exhaled carbon back into water.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:sabatier_reactor"
+    },
+    "title": "Closing the Loop"
+  },
+  "requirements": [
+    [
+      "closing_the_loop"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

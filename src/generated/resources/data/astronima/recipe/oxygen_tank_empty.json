@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "I",
+    "P",
+    "P"
+  ],
+  "result": {
+    "id": "astronima:oxygen_tank_empty"
+  }
+}

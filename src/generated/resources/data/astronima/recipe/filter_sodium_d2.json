@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:baked_silicate",
+    "astronima:baked_silicate",
+    "astronima:baked_silicate"
+  ],
+  "result": {
+    "id": "astronima:filter_sodium_d2"
+  }
+}

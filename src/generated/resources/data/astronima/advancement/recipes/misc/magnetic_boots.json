@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_nickel_grains": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:iron_nickel_grains"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:magnetic_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_iron_nickel_grains"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:magnetic_boots"
+    ]
+  }
+}

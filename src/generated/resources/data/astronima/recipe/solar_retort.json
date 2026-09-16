@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "astronima:iron_nickel_grains",
+    "I": "minecraft:iron_ingot",
+    "P": "astronima:hull_plate",
+    "S": "astronima:asteroid_rock"
+  },
+  "pattern": [
+    "PPP",
+    "PGP",
+    "SIS"
+  ],
+  "result": {
+    "id": "astronima:solar_retort"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/pre_breathe_station_bottom",
+    "side": "astronima:block/pre_breathe_station_side",
+    "top": "astronima:block/pre_breathe_station_top"
+  }
+}

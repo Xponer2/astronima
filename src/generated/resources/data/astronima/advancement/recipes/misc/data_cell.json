@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_memory_ram": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:memory_ram"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:data_cell"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_memory_ram"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:data_cell"
+    ]
+  }
+}

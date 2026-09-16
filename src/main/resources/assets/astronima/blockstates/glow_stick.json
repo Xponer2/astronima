@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "astronima:block/glow_stick"
+      },
+      {
+        "model": "astronima:block/glow_stick",
+        "y": 90
+      },
+      {
+        "model": "astronima:block/glow_stick",
+        "y": 180
+      },
+      {
+        "model": "astronima:block/glow_stick",
+        "y": 270
+      }
+    ]
+  }
+}

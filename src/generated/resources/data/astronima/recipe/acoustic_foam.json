@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:polyethylene",
+    "astronima:polyethylene",
+    "astronima:polyethylene"
+  ],
+  "result": {
+    "id": "astronima:acoustic_foam"
+  }
+}

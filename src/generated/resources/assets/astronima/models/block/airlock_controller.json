@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "astronima:block/airlock_controller_panel",
+    "side": "astronima:block/airlock_controller",
+    "top": "astronima:block/airlock_controller"
+  }
+}

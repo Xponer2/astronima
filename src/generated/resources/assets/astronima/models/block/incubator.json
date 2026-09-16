@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/incubator_bottom",
+    "side": "astronima:block/incubator_side",
+    "top": "astronima:block/incubator_top"
+  }
+}

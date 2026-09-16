@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hammer_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:hammer_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:ore_crusher"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hammer_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:ore_crusher"
+    ]
+  }
+}

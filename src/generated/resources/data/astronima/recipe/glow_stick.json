@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:mineral_salts",
+    "astronima:tholin_clump"
+  ],
+  "result": {
+    "count": 3,
+    "id": "astronima:glow_stick"
+  }
+}

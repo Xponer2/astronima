@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:metal_billet",
+    "astronima:pure_nickel",
+    "astronima:salvaged_circuit"
+  ],
+  "result": {
+    "id": "astronima:aluminum_electrode"
+  }
+}

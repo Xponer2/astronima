@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:one_screen_every_cell",
+  "criteria": {
+    "denser_by_design": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:cell_compressor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "The same cell, the same real contents, a quarter of the slots. Compression is a real upgrade applied in place, not a bigger box.",
+    "frame": "challenge",
+    "icon": {
+      "id": "astronima:cell_compressor"
+    },
+    "title": "Denser by Design"
+  },
+  "requirements": [
+    [
+      "denser_by_design"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

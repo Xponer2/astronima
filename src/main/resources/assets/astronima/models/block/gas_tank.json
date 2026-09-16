@@ -1,0 +1,84 @@
+{
+  "__comment": "Octagonal pressure vessel: three crossed boxes plus a base, a shoulder and a neck. Every box carries all six faces even where they end up buried, because the wing tips of each box are exposed where the others stop - omitting them left 432 holes in the hull, which read in game as seeing straight through the tank.",
+  "parent": "minecraft:block/block",
+  "textures": {
+    "side": "astronima:block/gas_tank_side",
+    "top": "astronima:block/gas_tank_top",
+    "bottom": "astronima:block/gas_tank_bottom",
+    "particle": "astronima:block/gas_tank_side"
+  },
+  "elements": [
+    {
+      "from": [4, 1, 2],
+      "to": [12, 14, 14],
+      "faces": {
+        "north": {"texture": "#side", "uv": [4, 2, 12, 15]},
+        "south": {"texture": "#side", "uv": [4, 2, 12, 15]},
+        "east": {"texture": "#side", "uv": [2, 2, 14, 15]},
+        "west": {"texture": "#side", "uv": [2, 2, 14, 15]},
+        "up": {"texture": "#top", "uv": [4, 2, 12, 14]},
+        "down": {"texture": "#bottom", "uv": [4, 2, 12, 14]}
+      }
+    },
+    {
+      "from": [2, 1, 4],
+      "to": [14, 14, 12],
+      "faces": {
+        "north": {"texture": "#side", "uv": [2, 2, 14, 15]},
+        "south": {"texture": "#side", "uv": [2, 2, 14, 15]},
+        "east": {"texture": "#side", "uv": [4, 2, 12, 15]},
+        "west": {"texture": "#side", "uv": [4, 2, 12, 15]},
+        "up": {"texture": "#top", "uv": [2, 4, 14, 12]},
+        "down": {"texture": "#bottom", "uv": [2, 4, 14, 12]}
+      }
+    },
+    {
+      "from": [3, 1, 3],
+      "to": [13, 14, 13],
+      "faces": {
+        "north": {"texture": "#side", "uv": [3, 2, 13, 15]},
+        "south": {"texture": "#side", "uv": [3, 2, 13, 15]},
+        "east": {"texture": "#side", "uv": [3, 2, 13, 15]},
+        "west": {"texture": "#side", "uv": [3, 2, 13, 15]},
+        "up": {"texture": "#top", "uv": [3, 3, 13, 13]},
+        "down": {"texture": "#bottom", "uv": [3, 3, 13, 13]}
+      }
+    },
+    {
+      "from": [3, 0, 3],
+      "to": [13, 1, 13],
+      "faces": {
+        "north": {"texture": "#bottom", "uv": [3, 14, 13, 15]},
+        "south": {"texture": "#bottom", "uv": [3, 14, 13, 15]},
+        "east": {"texture": "#bottom", "uv": [3, 14, 13, 15]},
+        "west": {"texture": "#bottom", "uv": [3, 14, 13, 15]},
+        "up": {"texture": "#bottom", "uv": [3, 3, 13, 13]},
+        "down": {"texture": "#bottom", "uv": [3, 3, 13, 13]}
+      }
+    },
+    {
+      "from": [5, 14, 5],
+      "to": [11, 15, 11],
+      "faces": {
+        "north": {"texture": "#top", "uv": [5, 0, 11, 1]},
+        "south": {"texture": "#top", "uv": [5, 0, 11, 1]},
+        "east": {"texture": "#top", "uv": [5, 0, 11, 1]},
+        "west": {"texture": "#top", "uv": [5, 0, 11, 1]},
+        "up": {"texture": "#top", "uv": [5, 5, 11, 11]},
+        "down": {"texture": "#top", "uv": [5, 5, 11, 11]}
+      }
+    },
+    {
+      "from": [6, 15, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "north": {"texture": "#top", "uv": [6, 1, 10, 2]},
+        "south": {"texture": "#top", "uv": [6, 1, 10, 2]},
+        "east": {"texture": "#top", "uv": [6, 1, 10, 2]},
+        "west": {"texture": "#top", "uv": [6, 1, 10, 2]},
+        "up": {"texture": "#top", "uv": [6, 6, 10, 10]},
+        "down": {"texture": "#top", "uv": [6, 6, 10, 10]}
+      }
+    }
+  ]
+}

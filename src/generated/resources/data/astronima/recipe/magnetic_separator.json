@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": "astronima:hematite_ore",
+    "S": "astronima:asteroid_rock"
+  },
+  "pattern": [
+    "SMS",
+    "M M",
+    "SMS"
+  ],
+  "result": {
+    "id": "astronima:magnetic_separator"
+  }
+}

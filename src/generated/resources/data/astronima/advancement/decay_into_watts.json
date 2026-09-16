@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:clicks_per_second",
+  "criteria": {
+    "decay_into_watts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:rtg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A radioisotope thermoelectric generator: real decay heat, straight to real watts, for years without a single moving part.",
+    "frame": "challenge",
+    "icon": {
+      "id": "astronima:rtg"
+    },
+    "title": "Decay Into Watts"
+  },
+  "requirements": [
+    [
+      "decay_into_watts"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

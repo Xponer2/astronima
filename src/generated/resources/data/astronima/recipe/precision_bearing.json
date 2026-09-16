@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:metal_billet",
+    "astronima:metal_billet",
+    "astronima:pure_nickel"
+  ],
+  "result": {
+    "count": 2,
+    "id": "astronima:precision_bearing"
+  }
+}

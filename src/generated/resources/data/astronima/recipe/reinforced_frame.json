@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:hull_plate",
+    "astronima:hull_plate",
+    "astronima:iron_rod",
+    "astronima:iron_rod"
+  ],
+  "result": {
+    "id": "astronima:reinforced_frame"
+  }
+}

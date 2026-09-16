@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:baked_silicate",
+    "R": "astronima:iron_rod"
+  },
+  "pattern": [
+    "BBB",
+    "RRR"
+  ],
+  "result": {
+    "id": "astronima:solar_array"
+  }
+}

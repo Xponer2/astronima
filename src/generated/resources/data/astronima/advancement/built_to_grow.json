@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:the_archive",
+  "criteria": {
+    "built_to_grow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:storage_drive"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Fifty-four real slots, but only as many unlocked as the frame you actually built around it. The structure is the upgrade, not the block alone.",
+    "icon": {
+      "id": "astronima:storage_drive"
+    },
+    "title": "Built to Grow"
+  },
+  "requirements": [
+    [
+      "built_to_grow"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

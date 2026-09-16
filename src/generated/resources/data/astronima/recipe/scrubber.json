@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "P": "astronima:hull_plate",
+    "S": "astronima:mineral_salts"
+  },
+  "pattern": [
+    "PPP",
+    "ISI",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:scrubber"
+  }
+}

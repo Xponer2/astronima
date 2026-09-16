@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:freeze_dried",
+  "criteria": {
+    "lightest_real_solid": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:silica_aerogel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Silica aerogel: 99% air by volume and still a solid you can hold — the real insulator this mod's own cryogenics needed to exist.",
+    "frame": "challenge",
+    "icon": {
+      "id": "astronima:silica_aerogel"
+    },
+    "title": "The Lightest Real Solid"
+  },
+  "requirements": [
+    [
+      "lightest_real_solid"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

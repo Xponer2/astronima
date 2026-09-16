@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "body": "astronima:block/gas_pipe",
+    "bore": "astronima:block/gas_valve_1",
+    "particle": "astronima:block/gas_pipe"
+  },
+  "elements": [
+    {
+      "from": [5, 5, 0],
+      "to": [11, 11, 16],
+      "faces": {
+        "north": {"texture": "#bore", "uv": [5, 5, 11, 11]},
+        "south": {"texture": "#bore", "uv": [5, 5, 11, 11]},
+        "east":  {"texture": "#body", "uv": [0, 5, 16, 11]},
+        "west":  {"texture": "#body", "uv": [0, 5, 16, 11]},
+        "up":    {"texture": "#body", "uv": [5, 0, 11, 16]},
+        "down":  {"texture": "#body", "uv": [5, 0, 11, 16]}
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "music.cosmic_survival": {
+    "sounds": [
+      {
+        "name": "astronima:music/cosmic_survival",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.cosmic_survival"
+  },
+  "music.cosmic_void": {
+    "sounds": [
+      {
+        "name": "astronima:music/cosmic_void",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.cosmic_void"
+  },
+  "music.crystal_cave": {
+    "sounds": [
+      {
+        "name": "astronima:music/crystal_cave",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.crystal_cave"
+  },
+  "music.deep_space_drift": {
+    "sounds": [
+      {
+        "name": "astronima:music/deep_space_drift",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.deep_space_drift"
+  },
+  "music.night_space_ambient": {
+    "sounds": [
+      {
+        "name": "astronima:music/night_space_ambient",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.night_space_ambient"
+  },
+  "music.quiet_cosmic_pads": {
+    "sounds": [
+      {
+        "name": "astronima:music/quiet_cosmic_pads",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.quiet_cosmic_pads"
+  },
+  "music.quiet_space_void": {
+    "sounds": [
+      {
+        "name": "astronima:music/quiet_space_void",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.quiet_space_void"
+  },
+  "music.vast_silence": {
+    "sounds": [
+      {
+        "name": "astronima:music/vast_silence",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.astronima.music.vast_silence"
+  }
+}

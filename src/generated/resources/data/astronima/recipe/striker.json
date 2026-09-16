@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:chlorate_powder",
+    "astronima:iron_rod"
+  ],
+  "result": {
+    "id": "astronima:striker"
+  }
+}

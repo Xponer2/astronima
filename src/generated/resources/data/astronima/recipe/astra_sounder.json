@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "astronima:pure_nickel",
+    "R": "astronima:iron_rod",
+    "S": "astronima:baked_silicate"
+  },
+  "pattern": [
+    " S ",
+    " P ",
+    " R "
+  ],
+  "result": {
+    "id": "astronima:astra_sounder"
+  }
+}

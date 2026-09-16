@@ -1,0 +1,30 @@
+{
+  "criteria": {
+    "has_suit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:eva_suit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "astronima:textures/block/asteroid_rock.png",
+    "description": "You woke up. The rock did not care either way.",
+    "icon": {
+      "id": "astronima:eva_suit"
+    },
+    "show_toast": false,
+    "title": "Sole Survivor"
+  },
+  "requirements": [
+    [
+      "has_suit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

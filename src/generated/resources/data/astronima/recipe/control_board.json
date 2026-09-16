@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:baked_silicate",
+    "astronima:salvaged_circuit"
+  ],
+  "result": {
+    "id": "astronima:control_board"
+  }
+}

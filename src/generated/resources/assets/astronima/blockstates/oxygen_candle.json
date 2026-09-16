@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "lit=false,spent=false": {
+      "model": "astronima:block/oxygen_candle"
+    },
+    "lit=false,spent=true": {
+      "model": "astronima:block/oxygen_candle_spent"
+    },
+    "lit=true,spent=false": {
+      "model": "astronima:block/oxygen_candle_lit"
+    },
+    "lit=true,spent=true": {
+      "model": "astronima:block/oxygen_candle_spent"
+    }
+  }
+}

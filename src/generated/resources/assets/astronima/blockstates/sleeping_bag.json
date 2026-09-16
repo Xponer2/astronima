@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "astronima:block/sleeping_bag",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "astronima:block/sleeping_bag"
+    },
+    "facing=south": {
+      "model": "astronima:block/sleeping_bag",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "astronima:block/sleeping_bag",
+      "y": 270
+    }
+  }
+}

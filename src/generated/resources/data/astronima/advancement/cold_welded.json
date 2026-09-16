@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:beneficiation",
+  "criteria": {
+    "cold_welded": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:metal_billet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Pressed solid in vacuum. With no air there is no oxide film, so clean metal simply bonds to itself — no heat involved anywhere.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:metal_billet"
+    },
+    "title": "Cold Welded"
+  },
+  "requirements": [
+    [
+      "cold_welded"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

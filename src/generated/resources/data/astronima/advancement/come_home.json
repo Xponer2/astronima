@@ -1,0 +1,26 @@
+{
+  "parent": "astronima:depressurise",
+  "criteria": {
+    "came_home": {
+      "conditions": {
+        "moment": "came_home"
+      },
+      "trigger": "astronima:airlock"
+    }
+  },
+  "display": {
+    "description": "The chamber refilled from the tank and the inner door opened. This is the moment the bottle you filled pays for itself — coming in is quick and free.",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "astronima:oxygen_tank"
+    },
+    "title": "Come Home on Stored Air"
+  },
+  "requirements": [
+    [
+      "came_home"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

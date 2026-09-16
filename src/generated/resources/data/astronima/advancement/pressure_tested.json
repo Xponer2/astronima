@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:field_repair",
+  "criteria": {
+    "pressure_tested": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:oxygen_tank"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A sealed helmet and a working tank mount. Either one alone is still a suit you die in.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:oxygen_tank"
+    },
+    "title": "Pressure Tested"
+  },
+  "requirements": [
+    [
+      "pressure_tested"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

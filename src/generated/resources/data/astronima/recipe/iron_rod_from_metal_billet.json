@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:metal_billet"
+  ],
+  "result": {
+    "count": 3,
+    "id": "astronima:iron_rod"
+  }
+}

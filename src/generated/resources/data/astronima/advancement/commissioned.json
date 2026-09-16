@@ -1,0 +1,24 @@
+{
+  "parent": "astronima:airtight",
+  "criteria": {
+    "commissioned": {
+      "conditions": {
+        "moment": "commissioned"
+      },
+      "trigger": "astronima:airlock"
+    }
+  },
+  "display": {
+    "description": "Four terminals, four devices, all of them checked out. You told the panel which door is the outer one instead of hoping it would work that out — which is what commissioning a control panel actually is.",
+    "icon": {
+      "id": "astronima:wrench"
+    },
+    "title": "Commissioned"
+  },
+  "requirements": [
+    [
+      "commissioned"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

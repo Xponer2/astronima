@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:downs_process",
+  "criteria": {
+    "wafer_grade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:wafer_silicon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A molten zone dragged the length of the rod pushes every trace of metal ahead of it. What is left behind is clean enough for a real chip.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:wafer_silicon"
+    },
+    "title": "Wafer Grade"
+  },
+  "requirements": [
+    [
+      "wafer_grade"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "clicks_per_second": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:geiger_counter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A real detector. You cannot manage a hazard you cannot measure, and this is the first honest number for this one.",
+    "icon": {
+      "id": "astronima:geiger_counter"
+    },
+    "title": "Clicks per Second"
+  },
+  "requirements": [
+    [
+      "clicks_per_second"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

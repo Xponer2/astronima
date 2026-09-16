@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "BPB",
+    "PCP",
+    "BPB"
+  ],
+  "result": {
+    "id": "astronima:induction_furnace"
+  }
+}

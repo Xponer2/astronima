@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "astronima:iron_nickel_grains",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "G G",
+    "P P"
+  ],
+  "result": {
+    "id": "astronima:magnetic_boots"
+  }
+}

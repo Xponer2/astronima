@@ -1,0 +1,200 @@
+package play.xponer.astronima.registry;
+
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import play.xponer.astronima.Astronima;
+
+public final class ModCreativeTabs {
+    public static final DeferredRegister<CreativeModeTab> TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Astronima.MODID);
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN = TABS.register("main",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.astronima"))
+                    .icon(() -> ModItems.GAS_ANALYZER.get().getDefaultInstance())
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.ASTEROID_ROCK.get());
+                        output.accept(ModItems.REGOLITH.get());
+                        output.accept(ModItems.WATER_ICE.get());
+                        output.accept(ModItems.CHLORATE_ORE.get());
+                        output.accept(ModItems.HEMATITE_ORE.get());
+                        output.accept(ModItems.HULL_PLATE.get());
+                        output.accept(ModItems.INSULATED_HULL_PLATE.get());
+                        output.accept(ModItems.PAINTED_HULL_PLATE.get());
+                        output.accept(ModItems.PAINTED_INSULATED_HULL_PLATE.get());
+                        output.accept(ModItems.GRAB_RAIL.get());
+                        output.accept(ModItems.PURGE_VALVE.get());
+                        output.accept(ModItems.SOLAR_ARRAY.get());
+                        output.accept(ModItems.POWER_CELL.get());
+                        output.accept(ModItems.COMBUSTION_GENERATOR.get());
+                        output.accept(ModItems.FUEL_CELL.get());
+                        output.accept(ModItems.SLUDGE.get());
+                        output.accept(ModItems.PURE_NICKEL.get());
+                        output.accept(ModItems.CARBONYL_REFINER.get());
+                        output.accept(ModItems.FLUIDIZED_BED.get());
+                        output.accept(ModItems.ILMENITE_ORE.get());
+                        output.accept(ModItems.CRUSHED_ILMENITE.get());
+                        output.accept(ModItems.IRON_POWDER.get());
+                        output.accept(ModItems.TITANIA.get());
+                        output.accept(ModItems.ELECTROLYSIS_CELL.get());
+                        output.accept(ModItems.SILICON_ELECTRODE.get());
+                        output.accept(ModItems.ALUMINUM_ELECTRODE.get());
+                        output.accept(ModItems.SILICON.get());
+                        output.accept(ModItems.ALUMINUM.get());
+                        output.accept(ModItems.SLS_PRINTER.get());
+                        output.accept(ModItems.SINTERED_FRAME.get());
+                        output.accept(ModItems.CRACKING_TOWER.get());
+                        output.accept(ModItems.POLYMERIZER.get());
+                        output.accept(ModItems.POLYETHYLENE.get());
+                        output.accept(ModItems.MYLAR.get());
+                        output.accept(ModItems.KAPTON_TAPE.get());
+                        output.accept(ModItems.ACOUSTIC_FOAM.get());
+                        output.accept(ModItems.SLEEPING_BAG.get());
+                        output.accept(ModItems.WATER_ELECTROLYZER.get());
+                        output.accept(ModItems.SABATIER_REACTOR.get());
+                        output.accept(ModItems.BOSCH_REACTOR.get());
+                        output.accept(ModItems.CARBON_POWDER.get());
+                        output.accept(ModItems.TROILITE_ROASTER.get());
+                        output.accept(ModItems.HALITE_ORE.get());
+                        output.accept(ModItems.DOWNS_CELL.get());
+                        output.accept(ModItems.SODIUM.get());
+                        output.accept(ModItems.ZONE_REFINER.get());
+                        output.accept(ModItems.WAFER_SILICON.get());
+                        output.accept(ModItems.FLUORITE_ORE.get());
+                        output.accept(ModItems.HF_DIGESTER.get());
+                        output.accept(ModItems.HYDROFLUORIC_ACID.get());
+                        output.accept(ModItems.GYPSUM.get());
+                        output.accept(ModItems.CLEANROOM_CONTROLLER.get());
+                        output.accept(ModItems.HEPA_FILTER.get());
+                        output.accept(ModItems.ETCH_STATION.get());
+                        output.accept(ModItems.ETCHED_DIE.get());
+                        output.accept(ModItems.FLUOROSILICIC_ACID.get());
+                        output.accept(ModItems.DATA_CELL.get());
+                        output.accept(ModItems.STORAGE_FRAME.get());
+                        output.accept(ModItems.STORAGE_DRIVE.get());
+                        output.accept(ModItems.STORAGE_TERMINAL.get());
+                        output.accept(ModItems.CELL_COMPRESSOR.get());
+                        output.accept(ModItems.SULFURIC_ACID_PLANT.get());
+                        output.accept(ModItems.HEAVY_WATER_CELL.get());
+                        output.accept(ModItems.TITANIUM_CELL.get());
+                        output.accept(ModItems.TITANIUM.get());
+                        output.accept(ModItems.INDUCTION_FURNACE.get());
+                        output.accept(ModItems.IRON_SMELTER.get());
+                        output.accept(ModItems.CRYO_TANK.get());
+                        output.accept(ModItems.CRYO_COOLER.get());
+                        output.accept(ModItems.FREEZE_DRYER.get());
+                        output.accept(ModItems.SILICA_AEROGEL.get());
+                        output.accept(ModItems.RTG.get());
+                        output.accept(ModItems.RTG_CORE.get());
+                        output.accept(ModItems.GEIGER_COUNTER.get());
+                        output.accept(ModItems.VR_SIMULATION_POD.get());
+                        output.accept(ModItems.SULFURIC_ACID.get());
+                        output.accept(ModItems.AMMONIA_HEAT_PIPE.get());
+                        output.accept(ModItems.AMMONIA_CANISTER_EMPTY.get());
+                        output.accept(ModItems.AMMONIA_CANISTER.get());
+                        output.accept(ModItems.PARAFFIN_WAX.get());
+                        output.accept(ModItems.PARAFFIN_THERMAL_MASS.get());
+                        output.accept(ModItems.MAGNETIC_BOOTS.get());
+                        output.accept(ModItems.BULKHEAD_DOOR.get());
+                        output.accept(ModItems.OXYGEN_CANDLE.get());
+                        output.accept(ModItems.GAS_PIPE.get());
+                        output.accept(ModItems.TELESCOPE.get());
+                        output.accept(ModItems.GAS_PORT.get());
+                        output.accept(ModItems.GAS_VALVE.get());
+                        output.accept(ModItems.GAS_PUMP.get());
+                        output.accept(ModItems.GAS_TANK.get());
+                        output.accept(ModItems.SCRUBBER.get());
+                        output.accept(ModItems.GAS_ANALYZER.get());
+                        output.accept(ModBlocks.METAL_RICH_ORE.get());
+                        output.accept(ModBlocks.ORE_CRUSHER.get());
+                        output.accept(ModBlocks.MAGNETIC_SEPARATOR.get());
+                        output.accept(ModBlocks.WINNOWING_TABLE.get());
+                        output.accept(ModBlocks.CARGO_CRATE.get());
+                        output.accept(ModBlocks.SOLAR_RETORT.get());
+                        output.accept(ModBlocks.COLD_FORGE.get());
+                        output.accept(ModItems.CRUSHED_ORE.get());
+                        output.accept(ModItems.METAL_BILLET.get());
+                        output.accept(ModItems.TOOL_HEAD.get());
+                        output.accept(ModItems.HAMMER_STONE.get());
+                        output.accept(ModItems.PRY_BAR.get());
+                        output.accept(ModItems.IMPROVISED_PICKAXE.get());
+                        output.accept(ModItems.METEORIC_PICKAXE.get());
+                        output.accept(ModItems.METEORIC_SHOVEL.get());
+                        output.accept(ModItems.METEORIC_AXE.get());
+                        output.accept(ModItems.IRON_NICKEL_GRAINS.get());
+                        output.accept(ModItems.PLATINUM_GROUP_GRAINS.get());
+                        output.accept(ModItems.TAILINGS.get());
+                        output.accept(ModItems.BAKED_SILICATE.get());
+                        output.accept(ModItems.MAGNESIUM_OXIDE.get());
+                        output.accept(ModItems.SLAG.get());
+                        output.accept(ModBlocks.PACKED_TAILINGS.get());
+                        output.accept(ModItems.LITHIUM_HYDROXIDE_CARTRIDGE.get());
+                        output.accept(ModItems.CHLORATE_POWDER.get());
+                        output.accept(ModItems.MINERAL_SALTS.get());
+                        output.accept(ModItems.OXYGEN_TANK.get());
+                        output.accept(ModItems.OXYGEN_TANK_EMPTY.get());
+                        output.accept(ModItems.THOLIN_CLUMP.get());
+                        output.accept(ModItems.IRON_ROD.get());
+                        output.accept(ModItems.REFRACTORY_LINING.get());
+                        output.accept(ModItems.PRECISION_BEARING.get());
+                        output.accept(ModItems.CONTROL_BOARD.get());
+                        output.accept(ModItems.GAS_SEAL.get());
+                        output.accept(ModItems.REINFORCED_FRAME.get());
+                        output.accept(ModItems.SEISMIC_PROBE.get());
+                        output.accept(ModItems.WRENCH.get());
+                        output.accept(ModItems.WIRE_COIL.get());
+                        output.accept(ModItems.WIRE_RIBBON.get());
+                        output.accept(ModItems.WIRE_CUTTERS.get());
+                        output.accept(ModItems.WIRE_SNIPS.get());
+                        output.accept(ModItems.PRESENCE_SENSOR.get());
+                        output.accept(ModItems.VACUUM_SENSOR.get());
+                        output.accept(ModItems.STARVING_SENSOR.get());
+                        output.accept(ModItems.FREEZING_SENSOR.get());
+
+                        output.accept(ModItems.DIAGNOSTIC_GOGGLES.get());
+                        output.accept(ModItems.BASIC_BIOMONITOR_CHIP.get());
+                        output.accept(ModItems.PATHOGEN_ANALYZER_CHIP.get());
+                        output.accept(ModItems.PETRI_DISH.get());
+                        output.accept(ModItems.INCUBATOR.get());
+                        output.accept(ModItems.DECON_STATION.get());
+                        output.accept(ModItems.MICROSCOPE.get());
+                        output.accept(ModItems.SYNTHESISER.get());
+                        output.accept(ModItems.DOSE.get());
+                        // Every wire-layer part, from the one set that defines them (rule 20):
+                        // a tab entry that had to be added by hand is exactly the kind of line
+                        // that gets forgotten, and the symptom is an item nobody can find.
+                        ModItems.PARTS.values().forEach(part -> output.accept(part.get()));
+
+                        output.accept(ModItems.AIRLOCK_CONTROLLER.get());
+                        output.accept(ModItems.ALARM.get());
+                        output.accept(ModItems.PRE_BREATHE_STATION.get());
+                        output.accept(ModItems.DEHUMIDIFIER.get());
+                        output.accept(ModItems.GLOW_STICK.get());
+                        output.accept(ModItems.UNLIT_TORCH.get());
+                        output.accept(ModItems.STRIKER.get());
+                        output.accept(ModItems.EVA_SUIT.get());
+                        output.accept(ModItems.SEALANT_PATCH.get());
+                        output.accept(ModItems.LATCH_SET.get());
+                        output.accept(ModItems.CALIBRATED_VALVE.get());
+                        output.accept(ModItems.INSULATION_WEAVE.get());
+                        output.accept(ModItems.SALVAGED_CIRCUIT.get());
+                        output.accept(ModItems.SPECTROGRAPH.get());
+                        output.accept(ModItems.SPECTRAL_PLATE.get());
+                        output.accept(ModItems.COHERENCE_METER.get());
+                        output.accept(ModItems.ASTRA_FIELD_METER.get());
+                        output.accept(ModItems.ASTRA_COLLECTOR.get());
+                        output.accept(ModItems.ASTRA_SOUNDER.get());
+                        output.accept(ModItems.ASTERIUM_GRAINS.get());
+                        output.accept(ModItems.ASTERIUM_BLOCK.get());
+                        output.accept(ModItems.ASTRA_ALTAR.get());
+                        output.accept(ModItems.CELESTIAL_ATLAS.get());
+                        output.accept(ModItems.WIDE_APERTURE_LENS.get());
+                        ModItems.FILTER_TOKENS.values().forEach(token -> output.accept(token.get()));
+                    })
+                    .build());
+
+    private ModCreativeTabs() {}
+}

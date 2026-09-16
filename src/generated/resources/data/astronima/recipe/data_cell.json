@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:memory_ram",
+    "astronima:metal_billet",
+    "astronima:salvaged_circuit"
+  ],
+  "result": {
+    "id": "astronima:data_cell"
+  }
+}

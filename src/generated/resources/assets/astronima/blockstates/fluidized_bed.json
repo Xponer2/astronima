@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astronima:block/fluidized_bed"
+    }
+  }
+}

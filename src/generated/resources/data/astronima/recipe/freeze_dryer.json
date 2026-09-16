@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "astronima:insulated_hull_plate",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "III",
+    "I I",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:freeze_dryer"
+  }
+}

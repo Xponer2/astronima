@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "water_split": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:water_electrolyzer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "2 H2O -> 2 H2 + O2, by current alone. Real hydrogen and real oxygen out of a water bottle, vented into the sealed room around it.",
+    "icon": {
+      "id": "astronima:water_electrolyzer"
+    },
+    "title": "Water Split"
+  },
+  "requirements": [
+    [
+      "water_split"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,7 @@
+{
+  "type": "astronima:forged_tool",
+  "category": "misc",
+  "key": { "H": "astronima:tool_head", "R": "astronima:iron_rod" },
+  "pattern": ["HH", "HR", " R"],
+  "result": { "id": "astronima:meteoric_axe" }
+}

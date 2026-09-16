@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": "astronima:tailings"
+  },
+  "pattern": [
+    "TT",
+    "TT"
+  ],
+  "result": {
+    "id": "astronima:packed_tailings"
+  }
+}

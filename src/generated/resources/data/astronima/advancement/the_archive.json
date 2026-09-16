@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "the_archive": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:data_cell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A digital manifest, not a bag of holding: log a container's real contents into one index instead of hauling every stack in your own hands.",
+    "icon": {
+      "id": "astronima:data_cell"
+    },
+    "title": "The Archive"
+  },
+  "requirements": [
+    [
+      "the_archive"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

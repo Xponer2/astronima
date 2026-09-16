@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:stirling_cold",
+  "criteria": {
+    "freeze_dried": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:freeze_dryer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Ice sublimated straight to vapor under vacuum, skipping the liquid phase entirely — the real process, not just cold air.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:freeze_dryer"
+    },
+    "title": "Freeze-Dried"
+  },
+  "requirements": [
+    [
+      "freeze_dried"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

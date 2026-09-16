@@ -1,0 +1,14 @@
+// 26.1.2	2026-09-06T13:16:33.5269049	Curios for astronima
+5672d5fb0e58779039bc50f77a32964ee3157ff5 data/astronima/curios/entities/player.json
+4a4c3cc3ac9341f69a099638fd5b2d16c0cd5ce0 data/astronima/curios/slots/boots.json
+546a05c0b3f505fab1f73dec2d3c0ac661727478 data/astronima/curios/slots/cartridge.json
+7ff26cdc43bfe6aa5d75cff5f98b38b57f9e63a4 data/astronima/curios/slots/goggles.json
+32f5ca30e14f7c6c6c5ade47dd18d2e92bad31f3 data/astronima/curios/slots/implant.json
+b8eb8c7d5ef7e568ebae7e303aa1f4e143cd7ecd data/astronima/curios/slots/suit.json
+8b825578667cecac4d41f7b2b15d374fb9a38a8f data/astronima/curios/slots/tank.json
+69e481a0835cf32826d04b9132e44382365c584c data/curios/tags/item/boots.json
+d89e2de077762d3ba29b14383ea8b25fc5b11b6b data/curios/tags/item/cartridge.json
+084a47ea308dcd85028029b6b6a44d4689798fdc data/curios/tags/item/goggles.json
+271117fcef31517b52117780a28e4b6f6daf2e55 data/curios/tags/item/implant.json
+6ce480023ce1e92e0ba76fd79f7c512def599a2d data/curios/tags/item/suit.json
+1655c0add114daf4213ab086c49ffbc04dc683a1 data/curios/tags/item/tank.json

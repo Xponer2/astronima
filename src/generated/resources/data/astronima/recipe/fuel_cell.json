@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "P": "astronima:hull_plate",
+    "S": "astronima:mineral_salts"
+  },
+  "pattern": [
+    "PSP",
+    "PSP",
+    "BBB"
+  ],
+  "result": {
+    "id": "astronima:fuel_cell"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astronima:block/paraffin_thermal_mass"
+    }
+  }
+}

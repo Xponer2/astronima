@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "astronima:asterium_grains",
+    "H": "astronima:hull_plate",
+    "R": "astronima:iron_rod"
+  },
+  "pattern": [
+    "HHH",
+    "GRG",
+    "HHH"
+  ],
+  "result": {
+    "id": "astronima:astra_altar"
+  }
+}

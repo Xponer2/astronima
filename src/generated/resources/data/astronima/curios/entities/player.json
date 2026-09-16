@@ -1,0 +1,13 @@
+{
+  "entities": [
+    "#curios:player_like"
+  ],
+  "slots": [
+    "suit",
+    "tank",
+    "cartridge",
+    "implant",
+    "boots",
+    "goggles"
+  ]
+}

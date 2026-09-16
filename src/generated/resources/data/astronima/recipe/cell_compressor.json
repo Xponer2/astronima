@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:precision_bearing",
+    "astronima:salvaged_circuit"
+  ],
+  "result": {
+    "id": "astronima:cell_compressor"
+  }
+}

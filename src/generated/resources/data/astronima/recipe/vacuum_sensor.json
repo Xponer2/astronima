@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:hull_plate",
+    "S": "astronima:mineral_salts"
+  },
+  "pattern": [
+    "PCP",
+    " S "
+  ],
+  "result": {
+    "id": "astronima:vacuum_sensor"
+  }
+}

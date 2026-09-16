@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "astronima:suffocation",
+    "astronima:hypercapnia",
+    "astronima:carbon_monoxide",
+    "astronima:toxic_gas",
+    "astronima:decompression"
+  ]
+}

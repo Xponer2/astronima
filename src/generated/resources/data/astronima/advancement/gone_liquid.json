@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "gone_liquid": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:cryo_tank"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A dewar, not a pressure vessel — real cryogenic storage, holding far more of a gas than compressing it ever could.",
+    "icon": {
+      "id": "astronima:cryo_tank"
+    },
+    "title": "Gone Liquid"
+  },
+  "requirements": [
+    [
+      "gone_liquid"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

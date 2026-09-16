@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:mylar",
+    "astronima:polyethylene",
+    "astronima:polyethylene"
+  ],
+  "result": {
+    "id": "astronima:sleeping_bag"
+  }
+}

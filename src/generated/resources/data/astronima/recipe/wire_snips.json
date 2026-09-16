@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:iron_rod",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "id": "astronima:wire_snips"
+  }
+}

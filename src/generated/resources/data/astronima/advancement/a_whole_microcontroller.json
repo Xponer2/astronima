@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:surface_mount_logic",
+  "criteria": {
+    "a_whole_microcontroller": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:processor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "An accumulator, a program counter, real flags — programmed by writing actual assembly, not stacking one more gate by hand.",
+    "frame": "challenge",
+    "icon": {
+      "id": "astronima:processor"
+    },
+    "title": "A Whole Microcontroller"
+  },
+  "requirements": [
+    [
+      "a_whole_microcontroller"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:built_to_grow",
+  "criteria": {
+    "one_screen_every_cell": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:storage_terminal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Every item logged in every connected drive, one sorted list, live. You no longer open cells one at a time to remember what is in them.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:storage_terminal"
+    },
+    "title": "One Screen, Every Cell"
+  },
+  "requirements": [
+    [
+      "one_screen_every_cell"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

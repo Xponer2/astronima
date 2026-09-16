@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hammer_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:hammer_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:cold_forge"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hammer_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:cold_forge"
+    ]
+  }
+}

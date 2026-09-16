@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/scrubber_bottom",
+    "side": "astronima:block/scrubber_side",
+    "top": "astronima:block/scrubber_top"
+  }
+}

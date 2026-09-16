@@ -1,0 +1,25 @@
+{
+  "parent": "astronima:commissioned",
+  "criteria": {
+    "cycled": {
+      "conditions": {
+        "moment": "cycled"
+      },
+      "trigger": "astronima:airlock"
+    }
+  },
+  "display": {
+    "description": "The chamber pumped down into your tank and the outer door released. You left without venting the habitat — the air is in the bottle, not in space.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:airlock_controller"
+    },
+    "title": "Depressurise"
+  },
+  "requirements": [
+    [
+      "cycled"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

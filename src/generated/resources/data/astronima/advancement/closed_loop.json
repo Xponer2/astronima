@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:first_breath",
+  "criteria": {
+    "closed_loop": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:scrubber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Oxygen is only half of it. You exhale carbon dioxide into a sealed room and it stays there until something removes it.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:scrubber"
+    },
+    "title": "Closed Loop"
+  },
+  "requirements": [
+    [
+      "closed_loop"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

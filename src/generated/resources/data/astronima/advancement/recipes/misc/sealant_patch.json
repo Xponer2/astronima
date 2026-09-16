@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hull_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:hull_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:sealant_patch"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hull_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:sealant_patch"
+    ]
+  }
+}

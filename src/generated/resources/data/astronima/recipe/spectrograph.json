@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": "astronima:hull_plate",
+    "P": "astronima:pure_nickel",
+    "R": "astronima:iron_rod",
+    "S": "astronima:baked_silicate"
+  },
+  "pattern": [
+    "SPS",
+    "SHS",
+    " R "
+  ],
+  "result": {
+    "id": "astronima:spectrograph"
+  }
+}

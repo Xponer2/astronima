@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:ore_dressing",
+  "criteria": {
+    "prospector": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:metal_rich_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A metal-rich seam. Ordinary rock carries a few percent; this carries enough to be worth the walk.",
+    "icon": {
+      "id": "astronima:metal_rich_ore"
+    },
+    "title": "Prospector"
+  },
+  "requirements": [
+    [
+      "prospector"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

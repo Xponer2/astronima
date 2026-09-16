@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "R": "astronima:iron_rod"
+  },
+  "pattern": [
+    "I I",
+    " R ",
+    "R R"
+  ],
+  "result": {
+    "id": "astronima:wire_cutters"
+  }
+}

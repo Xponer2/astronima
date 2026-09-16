@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:precision_bearing",
+    "E": "astronima:control_board",
+    "I": "astronima:insulated_hull_plate",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PBP",
+    "IEI",
+    "PBP"
+  ],
+  "result": {
+    "id": "astronima:cryo_cooler"
+  }
+}

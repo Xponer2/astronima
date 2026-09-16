@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "astronima:hull_plate",
+    "R": "astronima:iron_rod"
+  },
+  "pattern": [
+    "PRP"
+  ],
+  "result": {
+    "id": "astronima:gas_port"
+  }
+}

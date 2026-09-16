@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=down,lit=false": {
+      "model": "astronima:block/gas_pump",
+      "x": 90
+    },
+    "facing=down,lit=true": {
+      "model": "astronima:block/gas_pump_on",
+      "x": 90
+    },
+    "facing=east,lit=false": {
+      "model": "astronima:block/gas_pump",
+      "y": 90
+    },
+    "facing=east,lit=true": {
+      "model": "astronima:block/gas_pump_on",
+      "y": 90
+    },
+    "facing=north,lit=false": {
+      "model": "astronima:block/gas_pump"
+    },
+    "facing=north,lit=true": {
+      "model": "astronima:block/gas_pump_on"
+    },
+    "facing=south,lit=false": {
+      "model": "astronima:block/gas_pump",
+      "y": 180
+    },
+    "facing=south,lit=true": {
+      "model": "astronima:block/gas_pump_on",
+      "y": 180
+    },
+    "facing=up,lit=false": {
+      "model": "astronima:block/gas_pump",
+      "x": 270
+    },
+    "facing=up,lit=true": {
+      "model": "astronima:block/gas_pump_on",
+      "x": 270
+    },
+    "facing=west,lit=false": {
+      "model": "astronima:block/gas_pump",
+      "y": 270
+    },
+    "facing=west,lit=true": {
+      "model": "astronima:block/gas_pump_on",
+      "y": 270
+    }
+  }
+}

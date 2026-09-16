@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:cold_welded",
+  "criteria": {
+    "meteoric": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:meteoric_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A pickaxe from a rock that has never seen a flame. Work it too hard and it cracks; there is no annealing out here.",
+    "frame": "challenge",
+    "icon": {
+      "id": "astronima:meteoric_pickaxe"
+    },
+    "title": "Meteoric"
+  },
+  "requirements": [
+    [
+      "meteoric"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

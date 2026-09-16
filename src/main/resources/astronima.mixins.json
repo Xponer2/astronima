@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "play.xponer.astronima.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AbstractFurnaceBlockEntityMixin",
+    "AirControlMixin",
+    "FurnaceBurnAccessor",
+    "RcsThrustMixin",
+    "TetherMixin",
+    "VacuumFallMixin"
+  ],
+  "client": [
+    "TitleScreenLogoMixin",
+    "LoadingOverlayLogoMixin",
+    "SplashAnchorMixin",
+    "OrientationCameraPositionMixin",
+    "OrientationEyePositionMixin",
+    "OrientationInputMixin",
+    "OrientationModelTiltMixin",
+    "OrientationViewVectorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:regolith",
+    "astronima:regolith",
+    "astronima:regolith",
+    "astronima:regolith"
+  ],
+  "result": {
+    "id": "astronima:mineral_salts"
+  }
+}

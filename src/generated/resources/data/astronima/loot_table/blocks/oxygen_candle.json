@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "astronima:oxygen_candle",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "lit": "false",
+            "spent": "false"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "astronima:oxygen_candle"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "astronima:blocks/oxygen_candle"
+}

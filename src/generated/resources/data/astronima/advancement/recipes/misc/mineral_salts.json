@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_regolith": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:regolith"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:mineral_salts"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_regolith"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:mineral_salts"
+    ]
+  }
+}

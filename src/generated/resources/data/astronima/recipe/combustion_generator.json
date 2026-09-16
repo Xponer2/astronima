@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "M": "astronima:iron_rod",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PPP",
+    "BMB",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:combustion_generator"
+  }
+}

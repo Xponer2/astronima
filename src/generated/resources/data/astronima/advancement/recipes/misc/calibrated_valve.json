@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mineral_salts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:mineral_salts"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:calibrated_valve"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mineral_salts"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:calibrated_valve"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "astronima:forged_tool",
+  "category": "misc",
+  "key": { "G": "astronima:iron_nickel_grains", "R": "astronima:iron_rod" },
+  "pattern": ["GGG", " R ", " R "],
+  "result": { "id": "astronima:improvised_pickaxe" }
+}

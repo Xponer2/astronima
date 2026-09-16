@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tailings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:tailings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:packed_tailings"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tailings"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:packed_tailings"
+    ]
+  }
+}

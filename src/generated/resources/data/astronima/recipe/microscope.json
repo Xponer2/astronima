@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:hull_plate",
+    "S": "astronima:baked_silicate"
+  },
+  "pattern": [
+    " S ",
+    "PCP",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:microscope"
+  }
+}

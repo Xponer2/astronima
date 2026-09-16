@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:precision_bearing",
+    "C": "astronima:circuit_plate",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PPP",
+    "PBP",
+    "PCP"
+  ],
+  "result": {
+    "id": "astronima:etch_station"
+  }
+}

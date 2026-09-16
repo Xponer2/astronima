@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PBP",
+    "B B",
+    "PBP"
+  ],
+  "result": {
+    "count": 4,
+    "id": "astronima:storage_frame"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "astronima:block/gas_port",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "astronima:block/gas_port",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "astronima:block/gas_port"
+    },
+    "facing=south": {
+      "model": "astronima:block/gas_port",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "astronima:block/gas_port",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "astronima:block/gas_port",
+      "y": 270
+    }
+  }
+}

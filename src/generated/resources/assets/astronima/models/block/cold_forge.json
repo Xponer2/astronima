@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/cold_forge_bottom",
+    "side": "astronima:block/cold_forge_side",
+    "top": "astronima:block/cold_forge_top"
+  }
+}

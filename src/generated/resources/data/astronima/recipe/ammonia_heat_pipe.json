@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:ammonia_canister"
+  },
+  "pattern": [
+    "BCB"
+  ],
+  "result": {
+    "id": "astronima:ammonia_heat_pipe"
+  }
+}

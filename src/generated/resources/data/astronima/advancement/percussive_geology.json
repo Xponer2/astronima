@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "percussive_geology": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:hammer_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A tool made of rock, because there is no fire here to make anything else.",
+    "icon": {
+      "id": "astronima:hammer_stone"
+    },
+    "title": "Percussive Geology"
+  },
+  "requirements": [
+    [
+      "percussive_geology"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

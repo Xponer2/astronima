@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "astronima:block/oxygen_sensor"
+    },
+    "lit=true": {
+      "model": "astronima:block/oxygen_sensor_on"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_salvaged_circuit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:salvaged_circuit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "astronima:gate_and"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_salvaged_circuit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "astronima:gate_and"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "astronima:block/telescope_brass",
+    "brass": "astronima:block/telescope_brass"
+  },
+  "elements": [
+    { "__comment": "plinth",
+      "from": [2, 0, 2], "to": [14, 1.4, 14],
+      "faces": {
+        "north": {"texture": "#brass"}, "south": {"texture": "#brass"},
+        "east": {"texture": "#brass"}, "west": {"texture": "#brass"},
+        "up": {"texture": "#brass"}, "down": {"texture": "#brass"}
+      }
+    },
+    { "__comment": "cap",
+      "from": [3.2, 1.4, 3.2], "to": [12.8, 2.3, 12.8],
+      "faces": {
+        "north": {"texture": "#brass"}, "south": {"texture": "#brass"},
+        "east": {"texture": "#brass"}, "west": {"texture": "#brass"},
+        "up": {"texture": "#brass"}, "down": {"texture": "#brass"}
+      }
+    },
+    { "__comment": "azimuth post",
+      "from": [6.6, 2.3, 6.6], "to": [9.4, 10.5, 9.4],
+      "faces": {
+        "north": {"texture": "#brass"}, "south": {"texture": "#brass"},
+        "east": {"texture": "#brass"}, "west": {"texture": "#brass"},
+        "up": {"texture": "#brass"}, "down": {"texture": "#brass"}
+      }
+    },
+    { "__comment": "collar — the yoke's own azimuth pivot sits at its top (y=11.1); everything above this is TelescopeBlockEntityRenderer's own geometry now (TelescopeModels), so it can actually turn",
+      "from": [6.2, 10.3, 6.2], "to": [9.8, 11.1, 9.8],
+      "faces": {
+        "north": {"texture": "#brass"}, "south": {"texture": "#brass"},
+        "east": {"texture": "#brass"}, "west": {"texture": "#brass"},
+        "up": {"texture": "#brass"}, "down": {"texture": "#brass"}
+      }
+    }
+  ]
+}

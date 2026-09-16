@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:gas_seal",
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PPP",
+    "BCB",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:cracking_tower"
+  }
+}

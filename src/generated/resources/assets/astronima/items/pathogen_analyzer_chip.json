@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "astronima:item/pathogen_analyzer_chip"
+  }
+}

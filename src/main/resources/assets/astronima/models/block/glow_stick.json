@@ -1,0 +1,78 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "stick": "astronima:block/glow_stick",
+    "particle": "astronima:block/glow_stick"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        0,
+        7
+      ],
+      "to": [
+        12,
+        2,
+        9
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            4,
+            7,
+            12,
+            9
+          ],
+          "texture": "#stick",
+          "cullface": "down"
+        },
+        "up": {
+          "uv": [
+            4,
+            7,
+            12,
+            9
+          ],
+          "texture": "#stick"
+        },
+        "north": {
+          "uv": [
+            4,
+            5,
+            12,
+            7
+          ],
+          "texture": "#stick"
+        },
+        "south": {
+          "uv": [
+            4,
+            5,
+            12,
+            7
+          ],
+          "texture": "#stick"
+        },
+        "west": {
+          "uv": [
+            7,
+            5,
+            9,
+            7
+          ],
+          "texture": "#stick"
+        },
+        "east": {
+          "uv": [
+            7,
+            5,
+            9,
+            7
+          ],
+          "texture": "#stick"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "astronima:hull_plate",
+    "R": "astronima:iron_rod",
+    "S": "astronima:asteroid_rock"
+  },
+  "pattern": [
+    "PPP",
+    "R R",
+    "SSS"
+  ],
+  "result": {
+    "id": "astronima:winnowing_table"
+  }
+}

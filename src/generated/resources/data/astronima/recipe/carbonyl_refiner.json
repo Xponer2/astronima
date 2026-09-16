@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:refractory_lining",
+    "P": "astronima:hull_plate",
+    "R": "astronima:iron_rod"
+  },
+  "pattern": [
+    "BPB",
+    "PRP",
+    "BPB"
+  ],
+  "result": {
+    "id": "astronima:carbonyl_refiner"
+  }
+}

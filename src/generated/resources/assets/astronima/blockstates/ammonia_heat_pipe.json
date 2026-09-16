@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "astronima:block/ammonia_heat_pipe",
+      "y": 90
+    },
+    "axis=y": {
+      "model": "astronima:block/ammonia_heat_pipe",
+      "x": 90
+    },
+    "axis=z": {
+      "model": "astronima:block/ammonia_heat_pipe"
+    }
+  }
+}

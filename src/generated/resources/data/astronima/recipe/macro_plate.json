@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "astronima:circuit_plate",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "CCC",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:macro_plate"
+  }
+}

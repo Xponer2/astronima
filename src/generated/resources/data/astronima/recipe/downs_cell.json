@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:control_board",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "CBC",
+    "BPB",
+    "CBC"
+  ],
+  "result": {
+    "id": "astronima:downs_cell"
+  }
+}

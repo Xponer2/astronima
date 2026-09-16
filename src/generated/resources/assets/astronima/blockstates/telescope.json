@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "astronima:block/telescope",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "astronima:block/telescope"
+    },
+    "facing=south": {
+      "model": "astronima:block/telescope",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "astronima:block/telescope",
+      "y": 270
+    }
+  }
+}

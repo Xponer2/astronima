@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "astronima:block/frost_sensor"
+    },
+    "lit=true": {
+      "model": "astronima:block/frost_sensor_on"
+    }
+  }
+}

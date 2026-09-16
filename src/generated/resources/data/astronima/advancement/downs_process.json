@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "downs_process": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:downs_cell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Molten rock salt, split by current into real sodium metal and real chlorine gas — the same electrolysis that has made both industrially since 1924.",
+    "icon": {
+      "id": "astronima:downs_cell"
+    },
+    "title": "The Downs Process"
+  },
+  "requirements": [
+    [
+      "downs_process"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

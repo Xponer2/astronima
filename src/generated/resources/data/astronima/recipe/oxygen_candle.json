@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:chlorate_powder",
+    "astronima:chlorate_powder",
+    "astronima:chlorate_powder",
+    "astronima:chlorate_powder",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "id": "astronima:oxygen_candle"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:first_watt",
+  "criteria": {
+    "kept_for_the_dark": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:power_cell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Joules banked for the half of every day the array makes none — power you generated hours ago, spent now.",
+    "icon": {
+      "id": "astronima:power_cell"
+    },
+    "title": "Kept for the Dark"
+  },
+  "requirements": [
+    [
+      "kept_for_the_dark"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

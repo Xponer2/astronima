@@ -1,0 +1,29 @@
+{
+  "parent": "astronima:ore_dressing",
+  "criteria": {
+    "density_sorting": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:winnowing_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A gas stream sorts by weight where a magnet sorts by magnetism, so it catches the nickel sulfide a magnet never will. Concentrating it is not the same as getting the nickel out - that needs chemistry you do not have yet.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:winnowing_table"
+    },
+    "title": "The Other Axis"
+  },
+  "requirements": [
+    [
+      "density_sorting"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

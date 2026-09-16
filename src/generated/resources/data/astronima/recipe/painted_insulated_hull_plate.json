@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:insulated_hull_plate",
+    "astronima:titania"
+  ],
+  "result": {
+    "id": "astronima:painted_insulated_hull_plate"
+  }
+}

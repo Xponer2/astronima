@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:precision_bearing",
+    "C": "astronima:rtg_core",
+    "I": "astronima:insulated_hull_plate",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PBP",
+    "ICI",
+    "PBP"
+  ],
+  "result": {
+    "id": "astronima:rtg"
+  }
+}

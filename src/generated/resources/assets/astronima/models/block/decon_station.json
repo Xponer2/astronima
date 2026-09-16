@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/decon_station_top",
+    "side": "astronima:block/decon_station_side",
+    "top": "astronima:block/decon_station_top"
+  }
+}

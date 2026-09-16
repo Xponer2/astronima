@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": "astronima:hull_plate",
+    "T": "astronima:tailings"
+  },
+  "pattern": [
+    "TTT",
+    "THT",
+    "TTT"
+  ],
+  "result": {
+    "id": "astronima:insulated_hull_plate"
+  }
+}

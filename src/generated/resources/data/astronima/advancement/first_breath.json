@@ -1,0 +1,25 @@
+{
+  "parent": "astronima:airtight",
+  "criteria": {
+    "breathable_room": {
+      "conditions": {
+        "standard": "breathable"
+      },
+      "trigger": "astronima:habitat"
+    }
+  },
+  "display": {
+    "description": "Air you made, at a pressure that keeps your blood liquid. You can take the helmet off in here.",
+    "frame": "goal",
+    "icon": {
+      "id": "astronima:oxygen_candle"
+    },
+    "title": "First Breath"
+  },
+  "requirements": [
+    [
+      "breathable_room"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

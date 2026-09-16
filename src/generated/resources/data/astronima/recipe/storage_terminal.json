@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:salvaged_circuit",
+    "D": "astronima:video_framebuffer",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "CDC",
+    "PBP",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:storage_terminal"
+  }
+}

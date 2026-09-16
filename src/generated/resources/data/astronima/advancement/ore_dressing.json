@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:percussive_geology",
+  "criteria": {
+    "ore_dressing": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:crushed_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Ore is not smelted here, it is dressed. How finely you grind it decides everything the magnet can do next.",
+    "icon": {
+      "id": "astronima:crushed_ore"
+    },
+    "title": "Ore Dressing"
+  },
+  "requirements": [
+    [
+      "ore_dressing"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

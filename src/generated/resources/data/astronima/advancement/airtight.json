@@ -1,0 +1,24 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "sealed_room": {
+      "conditions": {
+        "standard": "shelter"
+      },
+      "trigger": "astronima:habitat"
+    }
+  },
+  "display": {
+    "description": "A room that actually holds. The analyzer will tell you whether it does; guessing will not.",
+    "icon": {
+      "id": "astronima:hull_plate"
+    },
+    "title": "Airtight"
+  },
+  "requirements": [
+    [
+      "sealed_room"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

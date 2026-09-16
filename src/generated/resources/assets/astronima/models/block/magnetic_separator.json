@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "astronima:block/magnetic_separator_bottom",
+    "side": "astronima:block/magnetic_separator_side",
+    "top": "astronima:block/magnetic_separator_top"
+  }
+}

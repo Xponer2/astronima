@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "astronima:circuit_plate",
+    "I": "minecraft:iron_ingot",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    "PPP",
+    "ICI",
+    "PPP"
+  ],
+  "result": {
+    "id": "astronima:cleanroom_controller"
+  }
+}

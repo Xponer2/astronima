@@ -1,0 +1,10 @@
+{
+  "type": "astronima:asteroid",
+  "generator": {
+    "type": "astronima:asteroid",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "astronima:asteroid_interior"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "astronima:root",
+  "criteria": {
+    "first_watt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "astronima:solar_array"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "A square metre of photovoltaic: real watts in real sun, and nothing at all once it sets.",
+    "icon": {
+      "id": "astronima:solar_array"
+    },
+    "title": "First Watt"
+  },
+  "requirements": [
+    [
+      "first_watt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

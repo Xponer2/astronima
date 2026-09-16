@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "astronima:block/presence_sensor"
+    },
+    "lit=true": {
+      "model": "astronima:block/presence_sensor_on"
+    }
+  }
+}
