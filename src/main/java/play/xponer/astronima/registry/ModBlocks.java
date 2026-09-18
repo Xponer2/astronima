@@ -353,6 +353,51 @@ public final class ModBlocks {
                             .sound(SoundType.METAL).lightLevel(state -> 6));
 
     /**
+     * Real high-temperature carbon chemistry, run in a box: graphite off carbon powder, real
+     * carbon fiber off a stabilized pitch fiber (design/carbon-fiber.md). No dial - it self-heats
+     * to whichever real setpoint its own feed needs, ~2500 °C at the high one, hot enough to earn
+     * a brighter glow than the troilite roaster's own oxidation heat.
+     */
+    public static final DeferredBlock<play.xponer.astronima.block.GraphitizerBlock> GRAPHITIZER =
+            BLOCKS.registerBlock("graphitizer", play.xponer.astronima.block.GraphitizerBlock::new,
+                    p -> p.mapColor(MapColor.COLOR_BLACK).strength(3.5f, 10.0f)
+                            .sound(SoundType.METAL).lightLevel(state -> 13));
+
+    /**
+     * Real photosynthesis, run in a box: a water bottle and the room's own CO2 in, this mod's
+     * first real food and real O2 out (design/hydroponics.md). Needs real electrical power to run
+     * at all - nothing about photosynthesis has a manual-labour equivalent.
+     */
+    public static final DeferredBlock<play.xponer.astronima.block.AlgaeBioreactorBlock> ALGAE_BIOREACTOR =
+            BLOCKS.registerBlock("algae_bioreactor",
+                    play.xponer.astronima.block.AlgaeBioreactorBlock::new,
+                    p -> p.mapColor(MapColor.COLOR_GREEN).strength(3.0f, 8.0f)
+                            .sound(SoundType.METAL));
+
+    /**
+     * Real red romaine lettuce, grown hydroponically (design/hydroponics.md). No item of its own -
+     * planted from {@code lettuce_seedling} and harvested by hand, the same standing vanilla's
+     * own wheat crop has.
+     */
+    public static final DeferredBlock<play.xponer.astronima.block.HydroponicCropBlock> HYDROPONIC_CROP =
+            BLOCKS.registerBlock("hydroponic_crop",
+                    play.xponer.astronima.block.HydroponicCropBlock::new,
+                    p -> p.mapColor(MapColor.PLANT).noCollision().instabreak()
+                            .sound(SoundType.CROP).pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY));
+
+    /**
+     * Real anaerobic digestion, run in a sealed box: real crop waste in, real biogas (into the
+     * room) and real fertilizer out (design/anaerobic-digestion.md). Runs without power - real
+     * digestion is bacterial metabolism on the waste's own chemical potential, the opposite of
+     * the algae bioreactor's own real electrical-light requirement.
+     */
+    public static final DeferredBlock<play.xponer.astronima.block.AnaerobicDigesterBlock> ANAEROBIC_DIGESTER =
+            BLOCKS.registerBlock("anaerobic_digester",
+                    play.xponer.astronima.block.AnaerobicDigesterBlock::new,
+                    p -> p.mapColor(MapColor.COLOR_BROWN).strength(2.5f, 6.0f)
+                            .sound(SoundType.METAL));
+
+    /**
      * The Contact Process, folded into one net equation: {@code 2 SO2 + O2 + 2 H2O -> 2 H2SO4}
      * over a hematite catalyst, bottled sulfuric acid out. See {@code design/chemistry-loop.md}
      * §2.7.

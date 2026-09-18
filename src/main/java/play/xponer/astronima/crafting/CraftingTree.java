@@ -289,7 +289,33 @@ public final class CraftingTree {
                 Map.entry("astronima:bosch_reactor",
                 "The real alternative to the Sabatier reactor: the same room CO2 and hydrogen, over an iron catalyst instead of nickel, into solid carbon and water vapor. Needs only half the hydrogen Sabatier does for the same CO2 - the carbon has to be dealt with instead of simply burned."),
                 Map.entry("astronima:carbon_powder",
-                "Solid carbon off the Bosch reactor - real steelmaking feedstock. No recipe consumes it yet; keep it for whichever tier finally alloys it into iron."),
+                "Solid carbon off the Bosch reactor - real amorphous soot. Anneal it in a Graphitizer with the room's oxygen purged out and it reorders into real crystalline graphite; the same vessel in an ordinary breathable room just burns it away instead."),
+                Map.entry("astronima:graphite_powder",
+                "Real crystalline graphite, annealed straight from carbon powder in a Graphitizer with the room's oxygen purged out - the same carbon, reordered by heat, no reagent. Combine with carbon fiber at a bench for a real carbon-carbon composite plate."),
+                Map.entry("astronima:graphitizer",
+                "Real high-temperature carbon chemistry - no dial, it self-heats to whatever it is fed. Carbon powder or a stabilized fiber, purged room: graphite or real carbon fiber. Either one, room still breathable: hot carbon burns in the air instead, and the charge is gone as smoke."),
+                Map.entry("astronima:pitch_fiber",
+                "Sludge, melt-spun at a bench into green fiber - shaping, not a reaction. Thermoplastic: heat it before stabilizing and it will fuse rather than carbonize."),
+                Map.entry("astronima:stabilized_fiber",
+                "Pitch fiber, oxidatively cross-linked in a Graphitizer with real oxygen in the room - infusible now, and ready for the same vessel's high setpoint to carbonize it into real carbon fiber."),
+                Map.entry("astronima:carbon_fiber",
+                "Real carbon fiber - a stabilized pitch fiber carbonized in a Graphitizer with the room's oxygen purged out. Combine with graphite powder at a bench for a real carbon-carbon composite plate."),
+                Map.entry("astronima:algae_bioreactor",
+                "Real photosynthesis: 6 CO2 + 6 H2O + light -> C6H12O6 + 6 O2. A real water bottle in, real oxygen and this mod's first real food out - needs real electrical power to run at all (nothing about photosynthesis has a manual-labour equivalent) and real CO2 in the room, spent 1:1 with the oxygen it makes."),
+                Map.entry("astronima:lettuce_seedling",
+                "A real seed bank that survived the crash. Plant it on a hull plate under real open sky and it grows into real red romaine lettuce - the same 'Outredgeous' cultivar NASA's own Veg-01/03/05 ISS experiments grow."),
+                Map.entry("astronima:lettuce",
+                "Real red romaine lettuce, grown hydroponically - a real second food, larger and less nutrient-dense than algae biomass. Pick it by hand at maturity and the plant keeps growing, the real 'several mature leaves... at weekly intervals' harvest NASA's own Veg-05 uses, not a destroy-and-replant cycle."),
+                Map.entry("astronima:algae_biomass",
+                "This mod's first real, edible food - real Chlorella/Spirulina off the algae bioreactor, over 60% protein by mass in the real organism and cited as up to 30% of a real astronaut's daily intake in real MELiSSA/ISS photobioreactor research. A real nutrient-dense supplement, not a full meal."),
+                Map.entry("astronima:crop_waste",
+                "Real inedible plant matter - the outer leaves, roots and stem every real leafy-green harvest leaves behind. Feed it to an anaerobic digester for real biogas and real fertilizer."),
+                Map.entry("astronima:anaerobic_digester",
+                "Real anaerobic digestion: bacteria break down organic waste with no oxygen into real biogas (roughly 60% methane, 40% CO2) and real fertilizer. Runs with no power at all - real digestion feeds on the waste's own chemical potential, not electricity or light."),
+                Map.entry("astronima:fertilizer",
+                "Real digestate - nitrogen/phosphorus/potassium-bearing fertilizer, the digester's own real second product. No consumer for it yet in this mod."),
+                Map.entry("astronima:carbon_composite_plate",
+                "Real carbon-carbon composite: carbon fiber reinforcement in a graphite matrix, the same real material aerospace heat shields and rocket nozzles use. No recipe consumes it yet; kept for the structural reinforcement the Hostile Rock II phase will want."),
                 Map.entry("astronima:troilite_roaster",
                 "Roasts crushed ore's own troilite (FeS) in the room's real oxygen: 4 FeS + 7 O2 -> 2 Fe2O3 + 4 SO2. The hematite smelts to iron like any other ore, but the SO2 genuinely vents into the room - don't stand in a sealed one without a scrubber."),
                 Map.entry("astronima:sulfuric_acid_plant",
@@ -299,7 +325,7 @@ public final class CraftingTree {
                 Map.entry("astronima:titanium_cell",
                 "FFC-Cambridge reduction: titania stays solid, as a cathode in molten CaCl2 at ~900C, and current pulls the oxide straight out of the lattice. Real and chosen over the (also real) Kroll process specifically because it needs no chlorine and no magnesium reagent - titania in, real metal out, no separate consolidation step."),
                 Map.entry("astronima:titanium",
-                "Real metal, reduced straight from titania. Its real decomposition potential is lower than aluminium's own - titanium's difficulty is slow solid-state diffusion, not raw voltage. No recipe consumes it yet; kept for whichever tier finally puts it to use, the same honest 'not yet' carbon_powder and sintered_frame already carry."),
+                "Real metal, reduced straight from titania. Its real decomposition potential is lower than aluminium's own - titanium's difficulty is slow solid-state diffusion, not raw voltage. No recipe consumes it yet; kept for whichever tier finally puts it to use, the same honest 'not yet' sintered_frame already carries."),
                 Map.entry("astronima:induction_furnace",
                 "Melts iron powder to an ingot without touching the room's own air - a vanilla furnace here already draws real oxygen and exhales CO2 while lit, competing directly with your lungs. Real sensible plus latent heat of fusion, an order of magnitude cheaper than the titanium cell's own reduction."),
                 Map.entry("astronima:iron_smelter",
@@ -327,7 +353,7 @@ public final class CraftingTree {
                 Map.entry("astronima:hydrofluoric_acid",
                 "Real hydrofluoric acid off the digester - correctly composed, correctly reactive chemistry, and genuinely dangerous now: right-clicking it crosses skin without pain and starts a real, slowly-clearing chemical-burn dose that ignores worn armor - a single item's own real mass is already enough to be critical. No antidote exists yet; avoidance is the only defence."),
                 Map.entry("astronima:gypsum",
-                "Real gypsum (CaSO4), the digester's own byproduct. Real industrial uses are plaster and cement; no recipe consumes it here yet, the same honest 'not yet' carbon_powder and sintered_frame already carry."),
+                "Real gypsum (CaSO4), the digester's own byproduct. Real industrial uses are plaster and cement; no recipe consumes it here yet, the same honest 'not yet' sintered_frame already carries."),
                 Map.entry("astronima:cleanroom_controller",
                 "A real HEPA blower/positive-pressure unit. Load a fresh filter by right-clicking with one; right-click empty-handed for status. Holds the sealed room it touches above standard atmosphere, raising its real, tracked cleanliness toward certified over about 20 real minutes - a leaky room never gets there and burns filters trying."),
                 Map.entry("astronima:hepa_filter",
@@ -916,6 +942,11 @@ public final class CraftingTree {
                         "Subsurface ice lenses at middle depths — the asteroid's water, and future oxygen and hydrogen."),
                 new WorldSource("astronima:tholin_clump",
                         "Combustible organics found while mining asteroid rock (about 1 in 12 blocks). The asteroid's furnace fuel."),
+                // A real seed bank surviving a real crash - the same "just have it, salvaged from
+                // the wreck" standing every other bare-hands find on this page already carries
+                // (design/hydroponics.md §4.3).
+                new WorldSource("astronima:lettuce_seedling",
+                        "Salvaged from the crew module's own emergency seed bank."),
                 new WorldSource("astronima:halite_ore",
                         "Rock salt, scattered near the ice lenses it evaporated out of — melt it"
                                 + " in a Downs cell for real sodium and chlorine."),
@@ -1129,6 +1160,63 @@ public final class CraftingTree {
                 // Made by the reactor, not a hand recipe - declared from its own catalyst feed
                 // the same way sintered_frame is declared from iron powder.
                 new Transformation("astronima:carbon_powder", "astronima:iron_powder"),
+                // A true ring - hollow centre only - unlike any of this family's other grids
+                // (design/carbon-fiber.md): the hollow-rows shapes belong to the troilite roaster
+                // and the sulfuric acid plant, and every symmetric corners/edges/centre
+                // permutation of plate-billet-circuit is already spoken for elsewhere.
+                new Shaped("astronima:graphitizer", 1,
+                        List.of("CPC", "B B", "CPC"),
+                        Map.of('C', "astronima:salvaged_circuit", 'P', "astronima:hull_plate",
+                                'B', "astronima:metal_billet")),
+                // Made by the vessel, not a hand recipe - annealed straight from carbon powder,
+                // no reagent (design/carbon-fiber.md §1's own real Acheson process).
+                new Transformation("astronima:graphite_powder", "astronima:carbon_powder"),
+                // Real melt-spinning: pure shaping, no reaction, the same "ordinary content, not
+                // a new mechanic" cut petrochemicals.md already gives mylar/kapton off polyethylene.
+                new Shapeless("astronima:pitch_fiber", 1, Map.of("astronima:sludge", 1)),
+                // Made by the vessel's low setpoint - real oxidative stabilization, needs the
+                // room's own oxygen (design/carbon-fiber.md §2).
+                new Transformation("astronima:stabilized_fiber", "astronima:pitch_fiber"),
+                // Made by the vessel's high setpoint - real carbonization/graphitization, the
+                // same anneal graphite_powder gets, off a genuinely different real precursor.
+                new Transformation("astronima:carbon_fiber", "astronima:stabilized_fiber"),
+                // Real aerospace practice, one crafting step standing in for real multi-cycle
+                // densification (design/carbon-fiber.md §3's own named simplification).
+                new Shapeless("astronima:carbon_composite_plate", 1,
+                        Map.of("astronima:graphite_powder", 1, "astronima:carbon_fiber", 1)),
+                // A true hollow-sides ring, circuit on the outer edges rather than the corners -
+                // unlike any grid in this family so far (design/hydroponics.md).
+                new Shaped("astronima:algae_bioreactor", 1,
+                        List.of("C C", "PBP", "C C"),
+                        Map.of('C', "astronima:salvaged_circuit", 'P', "astronima:hull_plate",
+                                'B', "astronima:metal_billet")),
+                // Made by the reactor, not a hand recipe - real photosynthesis off a real water
+                // bottle and the room's own CO2 (design/hydroponics.md §1).
+                new Transformation("astronima:algae_biomass", "minecraft:potion"),
+                // Not a Transformation: the seedling is planted (becomes a block), not consumed
+                // into lettuce in one step - real growth happens over many random ticks in
+                // between, and harvest leaves the plant alive at HARVESTED_AGE, not gone. No JEI
+                // page can show that shape, and jei_machine_transformations_are_visible correctly
+                // caught the fabricated claim that one should exist (the same lesson
+                // minecraft:potion's own fix already taught this design, design/hydroponics.md §4).
+                new WorldSource("astronima:lettuce",
+                        "picked by hand from a mature lettuce plant, grown from a planted seedling"),
+                // A cross, not a ring or hollow sides - a genuinely different topology from every
+                // grid in this family above (checked against each one, not assumed).
+                new Shaped("astronima:anaerobic_digester", 1,
+                        List.of(" C ", "BPB", " C "),
+                        Map.of('C', "astronima:salvaged_circuit", 'B', "astronima:metal_billet",
+                                'P', "astronima:hull_plate")),
+                // Trimmed by hand at the same real harvest that yields lettuce - not a
+                // Transformation for the identical reason lettuce itself is not one (above):
+                // harvesting is a real, drawn-out in-world interaction, not a machine "using" one
+                // item to make another (design/anaerobic-digestion.md §4).
+                new WorldSource("astronima:crop_waste",
+                        "trimmed by hand from a mature lettuce plant at harvest, the same real"
+                                + " right-click that yields the lettuce itself"),
+                // Made by the digester, not a hand recipe - real anaerobic digestion off real crop
+                // waste, no power required (design/anaerobic-digestion.md §1).
+                new Transformation("astronima:fertilizer", "astronima:crop_waste"),
                 // Same three materials as the loop's own trio above, billet and circuit swapped
                 // across the hollow corners so the actual material grid differs from all three
                 // (not just the letters) - the sulfur-chain machine reads as a cousin, not a clone.
@@ -1631,6 +1719,20 @@ public final class CraftingTree {
                         List.of("PPP", "IRI", "PPP"),
                         Map.of('P', "astronima:hull_plate", 'I', "minecraft:iron_ingot",
                                 'R', "astronima:iron_rod")),
+                // A real, pre-existing gap this tree never had to name until now: the
+                // dehumidifier is this mod's own real source of a bottled water item
+                // (SolarRetortBlockEntity's own doc - "the same vapour the dehumidifier
+                // bottles"), and nothing needed that traced until algae_biomass's own real
+                // photosynthesis chain became the first thing to consume a water bottle as its
+                // defining feedstock rather than an already-reachable convenience.
+                // WorldSource, not Transformation: the dehumidifier is a passive
+                // ReadableBlockEntity with no feed slot and no JEI page of its own - it condenses
+                // room water vapour (a gas), it does not "use" any item to make the bottle, so a
+                // Transformation's own "used another item" premise would be false, not merely
+                // undemonstrated (`jei_machine_transformations_are_visible` caught exactly this
+                // when this was first written as a Transformation from hull_plate).
+                new WorldSource("minecraft:potion",
+                        "condensed from a sealed room's own humid air by a dehumidifier"),
                 new Shaped("astronima:pre_breathe_station", 1,
                         List.of("PIP", "PRP"),
                         Map.of('P', "astronima:hull_plate", 'I', "minecraft:iron_ingot",

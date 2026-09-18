@@ -76,7 +76,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.ASTERIUM_BLOCK.get(),
                 ModBlocks.ASTRA_ALTAR.get(),
                 ModBlocks.CLEANROOM_CONTROLLER.get(),
-                ModBlocks.ETCH_STATION.get());
+                ModBlocks.ETCH_STATION.get(),
+                ModBlocks.GRAPHITIZER.get(),
+                ModBlocks.ALGAE_BIOREACTOR.get(),
+                ModBlocks.ANAEROBIC_DIGESTER.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.REGOLITH.get());
 
         // The grab rail's entire reason to exist. Reported as "they do nothing", and they did

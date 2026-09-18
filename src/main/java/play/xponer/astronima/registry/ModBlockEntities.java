@@ -151,6 +151,27 @@ public final class ModBlockEntities {
                             ModBlocks.TROILITE_ROASTER.get()));
 
     public static final DeferredHolder<BlockEntityType<?>,
+            BlockEntityType<play.xponer.astronima.block.entity.GraphitizerBlockEntity>>
+            GRAPHITIZER = BLOCK_ENTITIES.register("graphitizer", () ->
+                    new BlockEntityType<>(
+                            play.xponer.astronima.block.entity.GraphitizerBlockEntity::new,
+                            ModBlocks.GRAPHITIZER.get()));
+
+    public static final DeferredHolder<BlockEntityType<?>,
+            BlockEntityType<play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity>>
+            ALGAE_BIOREACTOR = BLOCK_ENTITIES.register("algae_bioreactor", () ->
+                    new BlockEntityType<>(
+                            play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity::new,
+                            ModBlocks.ALGAE_BIOREACTOR.get()));
+
+    public static final DeferredHolder<BlockEntityType<?>,
+            BlockEntityType<play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity>>
+            ANAEROBIC_DIGESTER = BLOCK_ENTITIES.register("anaerobic_digester", () ->
+                    new BlockEntityType<>(
+                            play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity::new,
+                            ModBlocks.ANAEROBIC_DIGESTER.get()));
+
+    public static final DeferredHolder<BlockEntityType<?>,
             BlockEntityType<play.xponer.astronima.block.entity.HeavyWaterCellBlockEntity>>
             HEAVY_WATER_CELL = BLOCK_ENTITIES.register("heavy_water_cell", () ->
                     new BlockEntityType<>(

@@ -60,6 +60,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.SABATIER_REACTOR.get(), "Sabatier Reactor");
         add(ModBlocks.BOSCH_REACTOR.get(), "Bosch Reactor");
         add(ModBlocks.TROILITE_ROASTER.get(), "Troilite Roaster");
+        add(ModBlocks.GRAPHITIZER.get(), "Graphitizer");
+        add(ModBlocks.ALGAE_BIOREACTOR.get(), "Algae Bioreactor");
+        add(ModBlocks.HYDROPONIC_CROP.get(), "Lettuce");
+        add(ModBlocks.ANAEROBIC_DIGESTER.get(), "Anaerobic Digester");
+        add(ModItems.CROP_WASTE.get(), "Crop Waste");
+        add(ModItems.FERTILIZER.get(), "Fertilizer");
         add(ModBlocks.SULFURIC_ACID_PLANT.get(), "Sulfuric Acid Plant");
         add(ModBlocks.HEAVY_WATER_CELL.get(), "Heavy Water Cell");
         add(ModBlocks.CRYO_TANK.get(), "Cryo Tank");
@@ -101,6 +107,14 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.VR_SIMULATION_POD.get(), "VR Simulation Pod");
         add(ModBlocks.AMMONIA_HEAT_PIPE.get(), "Ammonia Heat Pipe");
         add(ModItems.CARBON_POWDER.get(), "Carbon Powder");
+        add(ModItems.GRAPHITE_POWDER.get(), "Graphite Powder");
+        add(ModItems.PITCH_FIBER.get(), "Pitch Fiber");
+        add(ModItems.STABILIZED_FIBER.get(), "Stabilized Fiber");
+        add(ModItems.CARBON_FIBER.get(), "Carbon Fiber");
+        add(ModItems.CARBON_COMPOSITE_PLATE.get(), "Carbon Composite Plate");
+        add(ModItems.ALGAE_BIOMASS.get(), "Algae Biomass");
+        add(ModItems.LETTUCE_SEEDLING.get(), "Lettuce Seedling");
+        add(ModItems.LETTUCE.get(), "Lettuce");
         add(ModItems.SULFURIC_ACID.get(), "Sulfuric Acid");
         add(ModItems.AMMONIA_CANISTER.get(), "Ammonia Canister");
         add(ModItems.AMMONIA_CANISTER_EMPTY.get(), "Empty Ammonia Canister");

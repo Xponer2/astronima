@@ -100,6 +100,10 @@ public final class AtmosphereEvents {
             play.xponer.astronima.physio.Chronics.tick(player, Atmosphere.TICK_INTERVAL / 20.0,
                     diagnosis, play.xponer.astronima.physio.Infections.isSevere(player)
                             || radiationSevere(player));
+            // Real macronutrient reserves drain on the same real clock (design/macronutrients.md
+            // §3f) - not gated on diagnosis, since a starving body is starving whether or not the
+            // room is doing anything to it.
+            play.xponer.astronima.physio.Nutrition.tick(player, Atmosphere.TICK_INTERVAL / 20.0);
         } finally {
             publishVitals(player, diagnosis);
             publishSuitTelemetry(player, reading);

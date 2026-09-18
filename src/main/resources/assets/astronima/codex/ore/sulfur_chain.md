@@ -51,4 +51,4 @@ in atmospheric and mineral-dust chemistry, but honestly not the industrial-stand
 {item:astronima:sulfuric_acid} — a real, corrosive, bottled product, and nothing in this mod
 consumes it yet. Its real uses are ore leaching and lead-acid battery electrolyte; the power cell
 does not model battery chemistry yet either, so this stays honest content without an invented
-sink, the same standing {item:astronima:carbon_powder} already has.
+sink, the same standing {item:astronima:sintered_frame} already has.

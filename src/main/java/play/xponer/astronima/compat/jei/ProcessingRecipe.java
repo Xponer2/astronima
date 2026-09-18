@@ -731,8 +731,10 @@ public record ProcessingRecipe(ItemStack input, List<ItemStack> outputs,
                                 + play.xponer.astronima.block.entity.BoschReactorBlockEntity
                                         .CO2_PER_BATCH_MOL
                                 + " mol CO2 - half what Sabatier needs for the same CO2.",
-                        "Carbon has no recipe that consumes it yet - real steelmaking feedstock,"
-                                + " kept for whichever tier finally alloys it into iron.")));
+                        "Real amorphous soot. Anneal it in a Graphitizer with the room's own"
+                                + " oxygen purged out and it reorders into real crystalline"
+                                + " graphite - the same vessel in an ordinary breathable room"
+                                + " just burns it away instead.")));
     }
 
     // ------------------------------------------------------------------- Troilite roaster
@@ -1075,6 +1077,102 @@ public record ProcessingRecipe(ItemStack input, List<ItemStack> outputs,
                                 + " the smart visor and SCADA automation are its real, not-yet-built"
                                 + " uses."),
                 List.of(hf)));
+    }
+
+    // ------------------------------------------------------------------- Graphitizer
+
+    public static List<ProcessingRecipe> graphitizer() {
+        return List.of(graphitizePage(), stabilizePage(), carbonizePage());
+    }
+
+    private static ProcessingRecipe graphitizePage() {
+        int items = (int) play.xponer.astronima.block.entity.GraphitizerBlockEntity.CHARGE_CARBON_MOL;
+        ItemStack input = new ItemStack(ModItems.CARBON_POWDER.get(), items);
+        ItemStack output = new ItemStack(ModItems.GRAPHITE_POWDER.get(), items);
+        return new ProcessingRecipe(input, List.of(output), "Graphitizing Carbon Powder",
+                "no dial — self-heats to " + (int) play.xponer.astronima.sim.chem.Graphitization
+                        .HIGH_SETPOINT_K + " K", List.of(),
+                List.of("The real Acheson process: anneal amorphous carbon at real industrial"
+                                + " heat and it reorders into crystalline graphite. No reagent -"
+                                + " a real anneal, not a reaction.",
+                        "Needs the room's own oxygen purged out (CO2 or N2 both work): hot carbon"
+                                + " burns in air far faster than it reorders, so an unpurged room"
+                                + " does not stall the batch - it burns the charge away as CO2"
+                                + " instead of yielding graphite."));
+    }
+
+    private static ProcessingRecipe stabilizePage() {
+        int items = (int) play.xponer.astronima.block.entity.GraphitizerBlockEntity.CHARGE_CARBON_MOL;
+        ItemStack input = new ItemStack(ModItems.PITCH_FIBER.get(), items);
+        ItemStack output = new ItemStack(ModItems.STABILIZED_FIBER.get(), items);
+        return new ProcessingRecipe(input, List.of(output), "Stabilizing Pitch Fiber",
+                "no dial — self-heats to " + (int) play.xponer.astronima.sim.chem.Graphitization
+                        .LOW_SETPOINT_K + " K", List.of(),
+                List.of("Real oxidative cross-linking: converts a green, thermoplastic pitch"
+                                + " fiber (melt-spun sludge) into an infusible, thermoset one -"
+                                + " the step that makes carbonizing it possible at all.",
+                        "Needs real oxygen in the room to proceed at all - starved of it, the"
+                                + " charge simply waits. Unlike the high setpoint, there is no"
+                                + " combustion risk at this temperature."));
+    }
+
+    private static ProcessingRecipe carbonizePage() {
+        int items = (int) play.xponer.astronima.block.entity.GraphitizerBlockEntity.CHARGE_CARBON_MOL;
+        ItemStack input = new ItemStack(ModItems.STABILIZED_FIBER.get(), items);
+        ItemStack output = new ItemStack(ModItems.CARBON_FIBER.get(), items);
+        return new ProcessingRecipe(input, List.of(output), "Carbonizing Stabilized Fiber",
+                "no dial — self-heats to " + (int) play.xponer.astronima.sim.chem.Graphitization
+                        .HIGH_SETPOINT_K + " K", List.of(),
+                List.of("The same real anneal graphite gets, off a genuinely different real"
+                                + " precursor: real carbon fiber is not graphite respun - the"
+                                + " dominant industrial routes carbonize a spun pitch or polymer"
+                                + " fiber, not a graphitized powder.",
+                        "Needs the room's own oxygen purged out, exactly like graphitizing carbon"
+                                + " powder - the same vessel, the same real hazard, a different"
+                                + " real precursor.",
+                        "Combine with graphite powder at a bench for a real carbon-carbon"
+                                + " composite plate - the same reinforcement real rocket nozzles"
+                                + " and heat shields use."));
+    }
+
+    // ------------------------------------------------------------------- Algae bioreactor
+
+    public static List<ProcessingRecipe> algaeBioreactor() {
+        ItemStack input = new ItemStack(net.minecraft.world.item.Items.POTION);
+        ItemStack biomass = new ItemStack(ModItems.ALGAE_BIOMASS.get());
+        return List.of(new ProcessingRecipe(input, List.of(biomass), "Algae Bioreactor",
+                "no dial — needs real power and real CO2 in the room", List.of(),
+                List.of("Real photosynthesis: 6 CO2 + 6 H2O + light -> C6H12O6 + 6 O2, real and"
+                                + " balanced. A real water bottle in, real oxygen (1:1 with the"
+                                + " CO2 spent) vented into the room, and this mod's first real,"
+                                + " edible food out.",
+                        "Needs real electrical power to run at all - nothing about photosynthesis"
+                                + " has a manual-labour equivalent, the same real reasoning the"
+                                + " water electrolyzer already gives its own reaction.",
+                        "Needs no real sky access, unlike a lit greenhouse crop: the light is a"
+                                + " real LED panel, not the sun - the real, ISS-literature-backed"
+                                + " reason algae photobioreactors are flown at all.",
+                        "Real Chlorella/Spirulina, over 60% protein by mass in the real organism -"
+                                + " a real nutrient-dense supplement, not a full meal.")));
+    }
+
+    // ------------------------------------------------------------------- Anaerobic digester
+
+    public static List<ProcessingRecipe> anaerobicDigester() {
+        ItemStack input = new ItemStack(ModItems.CROP_WASTE.get());
+        ItemStack fertilizer = new ItemStack(ModItems.FERTILIZER.get());
+        return List.of(new ProcessingRecipe(input, List.of(fertilizer), "Anaerobic Digester",
+                "no dial — runs with no power at all", List.of(),
+                List.of("Real anaerobic digestion: bacteria break waste down with no oxygen into"
+                                + " real biogas and real fertilizer.",
+                        "Runs with no power at all - real digestion feeds on the waste's own"
+                                + " chemical potential, not electricity or light, the opposite of"
+                                + " the algae bioreactor's own real requirement.",
+                        "Real biogas (60% methane, 40% CO2, a real representative point in the"
+                                + " real 50-70% published range) vents into the room this sits in -"
+                                + " a combustion generator already burns the methane straight from"
+                                + " there.",
+                        "Real digestate, no consumer for it in this mod yet.")));
     }
 
     // ------------------------------------------------------------------- helpers

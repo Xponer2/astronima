@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "astronima:carbon_fiber",
+    "astronima:graphite_powder"
+  ],
+  "result": {
+    "id": "astronima:carbon_composite_plate"
+  }
+}

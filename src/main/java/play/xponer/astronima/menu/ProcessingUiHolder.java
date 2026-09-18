@@ -138,6 +138,9 @@ public final class ProcessingUiHolder implements MenuProvider, IContainerUIHolde
             case FREEZE_DRYER -> "freeze_dryer";
             case DOWNS_CELL -> "downs_cell";
             case ETCH_STATION -> "etch_station";
+            case GRAPHITIZER -> "graphitizer";
+            case ALGAE_BIOREACTOR -> "algae_bioreactor";
+            case ANAEROBIC_DIGESTER -> "anaerobic_digester";
         };
     }
 

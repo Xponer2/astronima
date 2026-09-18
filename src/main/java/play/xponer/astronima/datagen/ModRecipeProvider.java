@@ -93,6 +93,13 @@ public class ModRecipeProvider extends RecipeProvider {
         map.put("astronima:etch_station", ModBlocks.ETCH_STATION.get());
         map.put("astronima:etched_die", ModItems.ETCHED_DIE.get());
         map.put("astronima:fluorosilicic_acid", ModItems.FLUOROSILICIC_ACID.get());
+        map.put("astronima:graphitizer", ModBlocks.GRAPHITIZER.get());
+        map.put("astronima:graphite_powder", ModItems.GRAPHITE_POWDER.get());
+        map.put("astronima:pitch_fiber", ModItems.PITCH_FIBER.get());
+        map.put("astronima:carbon_fiber", ModItems.CARBON_FIBER.get());
+        map.put("astronima:carbon_composite_plate", ModItems.CARBON_COMPOSITE_PLATE.get());
+        map.put("astronima:algae_bioreactor", ModBlocks.ALGAE_BIOREACTOR.get());
+        map.put("astronima:anaerobic_digester", ModBlocks.ANAEROBIC_DIGESTER.get());
         map.put("astronima:data_cell", ModItems.DATA_CELL.get());
         map.put("astronima:storage_frame", ModBlocks.STORAGE_FRAME.get());
         map.put("astronima:storage_drive", ModBlocks.STORAGE_DRIVE.get());

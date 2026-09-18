@@ -195,6 +195,8 @@ public final class AstronimaCommand {
                 .then(titaniumCommands())
                 .then(inductionCommands())
                 .then(calcinationCommands())
+                .then(graphitizerCommands())
+                .then(algaeCommands())
                 .then(vrpodCommands())
                 .then(cryoCommands())
                 .then(radiationCommands())
@@ -331,6 +333,114 @@ public final class AstronimaCommand {
                                 .BAKED_SILICATE_CARBONATE,
                         clean.mgOGrams(), decrepitated.mgOGrams()),
                 ChatFormatting.GREEN);
+        return 1;
+    }
+
+    /**
+     * {@code /astronima graphitizer <high|low> <carbon_mol> <room_o2_mol>} — this was
+     * {@link play.xponer.astronima.sim.chem.Graphitization}'s first consumer (rule 1/13: the
+     * chemistry before the block), and stays as the readable way to see the whole "does it
+     * convert or does it burn" outcome for a given charge and room without building a
+     * Graphitizer and gassing a room to test it. See {@code design/carbon-fiber.md}.
+     */
+    private static LiteralArgumentBuilder<CommandSourceStack> graphitizerCommands() {
+        return Commands.literal("graphitizer")
+                .then(Commands.literal("high")
+                        .then(Commands.argument("carbon_mol", DoubleArgumentType.doubleArg(0))
+                                .then(Commands.argument("room_o2_mol", DoubleArgumentType.doubleArg(0))
+                                        .executes(context -> graphitizerHighSetpoint(context)))))
+                .then(Commands.literal("low")
+                        .then(Commands.argument("carbon_mol", DoubleArgumentType.doubleArg(0))
+                                .then(Commands.argument("room_o2_mol", DoubleArgumentType.doubleArg(0))
+                                        .executes(context -> graphitizerLowSetpoint(context)))));
+    }
+
+    private static int graphitizerHighSetpoint(CommandContext<CommandSourceStack> context) {
+        CommandSourceStack source = context.getSource();
+        double carbonMol = DoubleArgumentType.getDouble(context, "carbon_mol");
+        double roomO2Mol = DoubleArgumentType.getDouble(context, "room_o2_mol");
+
+        play.xponer.astronima.sim.chem.Graphitization.Charge charge =
+                play.xponer.astronima.sim.chem.Graphitization.Charge.of(carbonMol);
+        double o2Spent = 0;
+        double co2Made = 0;
+        for (int i = 0; i < 100000 && !charge.isSpent(); i++) {
+            play.xponer.astronima.sim.chem.Graphitization.Step step =
+                    play.xponer.astronima.sim.chem.Graphitization.stepHighSetpoint(
+                            charge, roomO2Mol, Math.max(0.001, carbonMol / 1000));
+            o2Spent += step.o2ConsumedMol();
+            co2Made += step.co2ProducedMol();
+            charge = step.charge();
+        }
+        line(source, String.format(java.util.Locale.ROOT,
+                        "Graphitizer, high setpoint (%.0f K) - %.2f mol carbon, %.2f mol room O2",
+                        play.xponer.astronima.sim.chem.Graphitization.HIGH_SETPOINT_K,
+                        carbonMol, roomO2Mol),
+                ChatFormatting.AQUA);
+        line(source, String.format(java.util.Locale.ROOT,
+                        "  %.2f mol graphite/carbon fiber, %.2f mol O2 spent, %.2f mol CO2 made",
+                        charge.productMol(), o2Spent, co2Made),
+                charge.productMol() >= carbonMol - 1e-6 ? ChatFormatting.GREEN
+                        : charge.productMol() <= 1e-6 ? ChatFormatting.RED : ChatFormatting.YELLOW);
+        return 1;
+    }
+
+    private static int graphitizerLowSetpoint(CommandContext<CommandSourceStack> context) {
+        CommandSourceStack source = context.getSource();
+        double carbonMol = DoubleArgumentType.getDouble(context, "carbon_mol");
+        double roomO2Mol = DoubleArgumentType.getDouble(context, "room_o2_mol");
+
+        play.xponer.astronima.sim.chem.Graphitization.Charge charge =
+                play.xponer.astronima.sim.chem.Graphitization.Charge.of(carbonMol);
+        for (int i = 0; i < 100000 && !charge.isSpent(); i++) {
+            charge = play.xponer.astronima.sim.chem.Graphitization.stepLowSetpoint(
+                    charge, roomO2Mol, Math.max(0.001, carbonMol / 1000));
+            if (roomO2Mol <= 0) {
+                break; // held - no oxygen, no reason to spin the loop out
+            }
+        }
+        line(source, String.format(java.util.Locale.ROOT,
+                        "Graphitizer, low setpoint (%.0f K) - %.2f mol pitch fiber, %.2f mol room O2",
+                        play.xponer.astronima.sim.chem.Graphitization.LOW_SETPOINT_K,
+                        carbonMol, roomO2Mol),
+                ChatFormatting.AQUA);
+        line(source, String.format(java.util.Locale.ROOT,
+                        "  %.2f mol stabilized, %.2f mol left waiting for oxygen",
+                        charge.productMol(), charge.carbonMol()),
+                charge.productMol() >= carbonMol - 1e-6 ? ChatFormatting.GREEN : ChatFormatting.YELLOW);
+        return 1;
+    }
+
+    /**
+     * {@code /astronima algae <room_co2_mol>} — this was
+     * {@link play.xponer.astronima.sim.chem.Photosynthesis}'s first consumer (rule 1/13: the
+     * chemistry before the block), and stays as the readable way to see whether a given room's
+     * own CO2 covers a real water-bottle charge without building a bioreactor and gassing a room
+     * to test it. See {@code design/hydroponics.md}.
+     */
+    private static LiteralArgumentBuilder<CommandSourceStack> algaeCommands() {
+        return Commands.literal("algae")
+                .then(Commands.argument("room_co2_mol", DoubleArgumentType.doubleArg(0))
+                        .executes(AstronimaCommand::algaeBatch));
+    }
+
+    private static int algaeBatch(CommandContext<CommandSourceStack> context) {
+        CommandSourceStack source = context.getSource();
+        double roomCo2Mol = DoubleArgumentType.getDouble(context, "room_co2_mol");
+
+        play.xponer.astronima.sim.chem.Photosynthesis.Batch batch =
+                play.xponer.astronima.sim.chem.Photosynthesis.run(roomCo2Mol);
+
+        line(source, String.format(java.util.Locale.ROOT,
+                        "Algae bioreactor - one water-bottle charge (needs %.1f mol CO2), room has"
+                                + " %.1f mol",
+                        play.xponer.astronima.sim.chem.Photosynthesis.CO2_PER_BOTTLE_MOL, roomCo2Mol),
+                ChatFormatting.AQUA);
+        line(source, String.format(java.util.Locale.ROOT,
+                        "  %.1f mol CO2 spent, %.1f mol O2 made%s",
+                        batch.co2ConsumedMol(), batch.o2ProducedMol(),
+                        batch.ran() ? "" : " - held, the room's own CO2 falls short of a whole charge"),
+                batch.ran() ? ChatFormatting.GREEN : ChatFormatting.YELLOW);
         return 1;
     }
 

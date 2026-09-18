@@ -165,6 +165,13 @@ public final class Chemistry {
         substance("pure_nickel", "Ni");
         substance("iron_powder", "Fe");
         substance("carbon_powder", "C");
+        // Same element, a real different allotrope - annealed straight from carbon_powder with
+        // no reagent (design/carbon-fiber.md §1's own real Acheson process).
+        substance("graphite_powder", "C");
+        // Carbonized/graphitized off a stabilized pitch fiber - the same real anneal
+        // graphite_powder gets, off a genuinely different real precursor (design/carbon-fiber.md
+        // §1's own honesty about "not graphite respun").
+        substance("carbon_fiber", "C");
         substance("sintered_frame", "Fe");
         substance("titania", "TiO2");
         substance("chlorate_powder", "NaClO3");
@@ -178,6 +185,10 @@ public final class Chemistry {
         substance("mineral_salts", "NaCl");
         // Subsurface ice — real, ordinary water ice; the asteroid's water, oxygen and hydrogen.
         substance("water_ice", "H2O");
+        // Real, ordinary water - the dehumidifier's own bottled product, now tracked because
+        // algae_biomass's own real photosynthesis chain is the first thing to need it reachable
+        // (design/hydroponics.md).
+        substance("minecraft:potion", "H2O");
         // Rock salt: near-pure NaCl (design/halogens.md §2) — the same real compound
         // mineral_salts is, by real coincidence of two different processes both ending in salt.
         substance("halite_ore", "NaCl");
@@ -246,6 +257,12 @@ public final class Chemistry {
         note("crushed_ore", NOTE_MIXTURE);
         note("tailings", NOTE_MIXTURE);
         note("sludge", NOTE_MIXTURE);
+        // Melt-spun sludge, unstabilized - carries sludge's own undefined-composition honesty
+        // forward; no reaction has happened yet, only shaping (design/carbon-fiber.md §3).
+        note("pitch_fiber", NOTE_MIXTURE);
+        // Oxidatively cross-linked, but still a real mixture with no fixed formula - the
+        // cross-linking is real and partial, not a clean new compound (design/carbon-fiber.md §3).
+        note("stabilized_fiber", NOTE_MIXTURE);
         note("tholin_clump", NOTE_MIXTURE);
         // A mixture of medium-length alkanes, not a polymer - no fixed formula, and rendered
         // from sludge (itself already NOTE_MIXTURE) rather than something new entering the game.
@@ -254,6 +271,19 @@ public final class Chemistry {
         // (design/radiation.md §2 — "a single reference isotope's dose behaviour, not a specific
         // real one"); naming an element here would claim a precision the design itself refuses.
         note("rtg_core", NOTE_MIXTURE);
+        // Real algae biomass (Chlorella/Spirulina) - real, complex, living organic matter with
+        // no fixed formula, the same honesty carbon_powder's own precursor family already gets
+        // for organic mixtures (design/hydroponics.md §1.3).
+        note("algae_biomass", NOTE_MIXTURE);
+        // Real living plant matter, no fixed formula - the same honesty algae_biomass already
+        // carries (design/hydroponics.md §4).
+        note("lettuce_seedling", NOTE_MIXTURE);
+        note("lettuce", NOTE_MIXTURE);
+        // Real inedible plant matter and real digestate - neither has a fixed formula, the same
+        // honesty every other organic mixture in this roster already gets
+        // (design/anaerobic-digestion.md).
+        note("crop_waste", NOTE_MIXTURE);
+        note("fertilizer", NOTE_MIXTURE);
 
         // The magic tier invents its own physics on purpose (feedback-magic-can-invent-physics)
         // — named as such rather than given a fabricated formula or silently left with no entry.

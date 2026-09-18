@@ -149,7 +149,41 @@ public enum WorkState {
      * either one and rechecking is a normal loop, not a hidden second stall behind the first.
      */
     NOT_READY_TO_DRY("Needs vacuum and LN2",
-            "Move it outside a sealed room, next to a dewar holding liquid nitrogen");
+            "Move it outside a sealed room, next to a dewar holding liquid nitrogen"),
+
+    /**
+     * The Graphitizer, fed pitch fiber, with no oxygen in the room to stabilize it.
+     *
+     * <p>Its own value rather than {@link #NO_OXYGEN} because that one's own remedy text is
+     * hard-coded to the troilite roaster's "roasting a sulfide" — reusing it here would send a
+     * player stabilizing fiber to go roast ore. Held, not working: no oxygen means no reaction at
+     * all at this temperature, so nothing is lost by waiting.
+     */
+    NEEDS_OXIDIZER("Needs oxygen in the room",
+            "Stabilizing pitch fiber needs real oxygen - this band will not run without it"),
+
+    /**
+     * The Graphitizer, fed carbon powder or stabilized fiber, with oxygen still in the room at
+     * its high setpoint: hot carbon burns in air (C + O2 -&gt; CO2) faster than it reorders, so
+     * the charge is being consumed as smoke instead of becoming graphite or carbon fiber.
+     *
+     * <p>Not held: the batch keeps advancing while it burns, the same shape {@link #BLOWING_OUT}
+     * already established for the fluidized bed — a real, ongoing loss the panel must not colour
+     * as a healthy run.
+     */
+    COMBUSTING("Burning, not carbonizing",
+            "Purge the oxygen out of this room before the charge is gone"),
+
+    /**
+     * The algae bioreactor, fed a real water bottle, with too little CO2 in the room to cover a
+     * whole real batch.
+     *
+     * <p>Its own value rather than {@link #NO_OXYGEN}/{@link #NO_REAGENT}/{@link #NO_ETHYLENE} -
+     * each of those already has a different gas hard-coded into its own remedy text, and none of
+     * them is CO2.
+     */
+    NO_CARBON_DIOXIDE("No carbon dioxide",
+            "Needs CO2 in the room - breathing already makes some, or pipe more in");
 
     private final String label;
     private final String remedy;

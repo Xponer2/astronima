@@ -1,8 +1,10 @@
-// 26.1.2	2026-09-16T11:22:18.4453584	Loot Tables
+// 26.1.2	2026-09-17T18:08:57.0372995	Loot Tables
 d00383545a9d1e33333760447bdf11c3d829e874 data/astronima/loot_table/blocks/acoustic_foam.json
 8628d0d38564d379188fb89ba6c8387b5c4f3671 data/astronima/loot_table/blocks/airlock_controller.json
 94a61c6ed8e56adb50146035ae723ffd930223ef data/astronima/loot_table/blocks/alarm.json
+e438108510ece3cb0f074c461bde4c4323d9ad2f data/astronima/loot_table/blocks/algae_bioreactor.json
 f1ca0220edbaf515d6d7180242580fd1bb997509 data/astronima/loot_table/blocks/ammonia_heat_pipe.json
+9dced0f059b326a0e8f72bf247ee94992967f960 data/astronima/loot_table/blocks/anaerobic_digester.json
 7a3bf6f2631e6b1347f853ebec649c64b677b06c data/astronima/loot_table/blocks/asterium_block.json
 657cfcdcaf0af6e68ff267c73d8fbbda3d2118d6 data/astronima/loot_table/blocks/asteroid_rock.json
 bd18effa20c391d71fa2e845a9bbe1b3aaf111d9 data/astronima/loot_table/blocks/astra_altar.json
@@ -34,11 +36,13 @@ dbb0e0e16eb59e24e7d79ed4ff8f73906908a3e3 data/astronima/loot_table/blocks/gas_po
 789a2b8d094e43aa07a7b4c5107003c48f005544 data/astronima/loot_table/blocks/gas_valve.json
 ed1a3ed2d25e8738ab074ed7386512b65c022c93 data/astronima/loot_table/blocks/glow_stick.json
 3b8aafc3e527ffdfffb614a2db12b7dd2d5d47ae data/astronima/loot_table/blocks/grab_rail.json
+6de88df3d02698f76910756bd15ca5daf729c142 data/astronima/loot_table/blocks/graphitizer.json
 6d7fd3f236fb414b2704053f9988aa4e26c87856 data/astronima/loot_table/blocks/halite_ore.json
 d603e9976a961590c3b2086c567c7ed76c246b0f data/astronima/loot_table/blocks/heavy_water_cell.json
 966ef3fa144c44dedcac2a9fc7073fb6513b4219 data/astronima/loot_table/blocks/hematite_ore.json
 27d1bcf87971f31c38cd13c720eb65e7dd7c2afe data/astronima/loot_table/blocks/hf_digester.json
 cdb08d0929b863f7f95a6955a1bb692289d1f636 data/astronima/loot_table/blocks/hull_plate.json
+46c2232aad7186274722e76ea7302de5aab2aa8d data/astronima/loot_table/blocks/hydroponic_crop.json
 bac948c55baf8f246b505d716e4f5003dbee5963 data/astronima/loot_table/blocks/ilmenite_ore.json
 005820310f708434fed185d8a7938f179f89f3be data/astronima/loot_table/blocks/incubator.json
 810d71445a6e939c4b8c46d2e233afb08d275d93 data/astronima/loot_table/blocks/induction_furnace.json

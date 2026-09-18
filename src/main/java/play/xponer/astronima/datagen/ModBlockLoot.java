@@ -108,6 +108,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.HF_DIGESTER.get());
         dropSelf(ModBlocks.CLEANROOM_CONTROLLER.get());
         dropSelf(ModBlocks.ETCH_STATION.get());
+        dropSelf(ModBlocks.GRAPHITIZER.get());
+        dropSelf(ModBlocks.ALGAE_BIOREACTOR.get());
+        dropSelf(ModBlocks.ANAEROBIC_DIGESTER.get());
         dropSelf(ModBlocks.STORAGE_FRAME.get());
         dropSelf(ModBlocks.STORAGE_DRIVE.get());
         dropSelf(ModBlocks.STORAGE_TERMINAL.get());
@@ -147,6 +150,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
         add(ModBlocks.UNLIT_WALL_TORCH.get(), createSingleItemTable(ModBlocks.UNLIT_TORCH.get()));
         // Scraped mold is destroyed, not harvested.
         add(ModBlocks.MOLD.get(), noDrop());
+        // Breaking a growing plant destroys it - the real harvest is a right-click at maturity
+        // (design/hydroponics.md §4.2), not breaking the block.
+        add(ModBlocks.HYDROPONIC_CROP.get(), noDrop());
         // A candle is a one-shot chemical charge: once lit (or spent) there is nothing
         // left to recover — breaking it mid-burn must not refund a fresh candle.
         add(ModBlocks.OXYGEN_CANDLE.get(), block -> LootTable.lootTable().withPool(

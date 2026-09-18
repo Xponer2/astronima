@@ -137,9 +137,77 @@ public final class ModItems {
     public static final DeferredItem<?> BOSCH_REACTOR =
             ITEMS.registerSimpleBlockItem(ModBlocks.BOSCH_REACTOR);
 
-    /** {@code CO2 + 2 H2 -> C(s) + 2 H2O}: the Bosch reactor's own solid product. A real
-     * steelmaking feedstock with an honest "not yet" — see design/chemistry-loop.md §2.5. */
+    /** {@code CO2 + 2 H2 -> C(s) + 2 H2O}: the Bosch reactor's own solid product. Real amorphous
+     * soot, annealed to graphite by the Graphitizer (design/carbon-fiber.md) — the honest next
+     * step for a "not yet" this item carried since v0.6. */
     public static final DeferredItem<Item> CARBON_POWDER = ITEMS.registerSimpleItem("carbon_powder");
+
+    /** Crystalline carbon, annealed from {@link #CARBON_POWDER} at ~2500 °C (the real Acheson
+     * process) — the Graphitizer's own high-setpoint product when the room's oxygen is purged.
+     * See design/carbon-fiber.md. */
+    public static final DeferredItem<Item> GRAPHITE_POWDER = ITEMS.registerSimpleItem("graphite_powder");
+
+    /** Green, unstabilized pitch fiber — real melt-spun {@link #SLUDGE}, shaped at a bench, not
+     * reacted (design/carbon-fiber.md §2). Will fuse rather than carbonize if heated before it is
+     * stabilized. */
+    public static final DeferredItem<Item> PITCH_FIBER = ITEMS.registerSimpleItem("pitch_fiber");
+
+    /** {@link #PITCH_FIBER}, oxidatively cross-linked at the Graphitizer's low setpoint (real
+     * stabilization, ~300 °C, needs the room's own oxygen) — infusible, and the Graphitizer's own
+     * high-setpoint feed for real carbon fiber. See design/carbon-fiber.md. */
+    public static final DeferredItem<Item> STABILIZED_FIBER = ITEMS.registerSimpleItem("stabilized_fiber");
+
+    /** Real carbon fiber: {@link #STABILIZED_FIBER} carbonized/graphitized at the Graphitizer's
+     * high setpoint, the same real anneal {@link #GRAPHITE_POWDER} gets, off a genuinely different
+     * real precursor (design/carbon-fiber.md §1's own honesty about "not graphite respun"). */
+    public static final DeferredItem<Item> CARBON_FIBER = ITEMS.registerSimpleItem("carbon_fiber");
+
+    /** Real carbon-carbon composite: graphite powder as the matrix, carbon fiber as the
+     * reinforcement, one crafting-table step (a named simplification for real multi-cycle
+     * densification — design/carbon-fiber.md §3). Honest {@code USE_PENDING} against
+     * "v0.8 — The Hostile Rock II"'s own structural-reinforcement line until that phase exists. */
+    public static final DeferredItem<Item> CARBON_COMPOSITE_PLATE =
+            ITEMS.registerSimpleItem("carbon_composite_plate");
+
+    public static final DeferredItem<?> GRAPHITIZER =
+            ITEMS.registerSimpleBlockItem(ModBlocks.GRAPHITIZER);
+
+    /** This mod's first real, edible food — real Chlorella/Spirulina, off the algae bioreactor.
+     * A real nutrient-dense supplement (>60% protein by mass in the real organism), not a full
+     * meal: modest nutrition, high saturation per point. See design/hydroponics.md §1.3. */
+    public static final DeferredItem<Item> ALGAE_BIOMASS = ITEMS.registerSimpleItem("algae_biomass",
+            p -> p.food(new net.minecraft.world.food.FoodProperties.Builder()
+                    .nutrition(3).saturationModifier(0.8f).build()));
+
+    public static final DeferredItem<?> ALGAE_BIOREACTOR =
+            ITEMS.registerSimpleBlockItem(ModBlocks.ALGAE_BIOREACTOR);
+
+    /** A real seed bank surviving a real crash - the same "just have it, salvaged from the wreck"
+     * standing asteroid_rock/tholin_clump already carry (design/hydroponics.md §4.3). A real
+     * {@code BlockItem} under its own name, the same "seed places the crop" shape vanilla's own
+     * wheat seeds already are - places {@link ModBlocks#HYDROPONIC_CROP}. */
+    public static final DeferredItem<net.minecraft.world.item.BlockItem> LETTUCE_SEEDLING =
+            ITEMS.registerSimpleBlockItem("lettuce_seedling", ModBlocks.HYDROPONIC_CROP);
+
+    /** Real red romaine lettuce - the 'Outredgeous' cultivar NASA's own Veg-01/03/05 ISS
+     * experiments grow. A real second food, larger and less nutrient-dense than algae_biomass
+     * (design/hydroponics.md §4.6). */
+    public static final DeferredItem<Item> LETTUCE = ITEMS.registerSimpleItem("lettuce",
+            p -> p.food(new net.minecraft.world.food.FoodProperties.Builder()
+                    .nutrition(2).saturationModifier(0.3f).build()));
+
+    /** Real inedible harvest residue - the same real plant lettuce comes off, a second real fact
+     *  about it the mod never modelled until now (design/anaerobic-digestion.md §0). */
+    public static final DeferredItem<Item> CROP_WASTE = ITEMS.registerSimpleItem("crop_waste");
+
+    public static final DeferredItem<?> ANAEROBIC_DIGESTER =
+            ITEMS.registerSimpleBlockItem(ModBlocks.ANAEROBIC_DIGESTER);
+
+    /** Real digestate: nitrogen/phosphorus/potassium-bearing fertilizer, the digester's own real
+     *  second output. No real consumer yet - honest {@code USE_PENDING} against "v0.75 —
+     *  Bioregeneration & Genetics" itself, the same phase that built the hydroponic system this
+     *  should eventually feed (design/anaerobic-digestion.md §1). */
+    public static final DeferredItem<Item> FERTILIZER = ITEMS.registerSimpleItem("fertilizer");
 
     public static final DeferredItem<?> TROILITE_ROASTER =
             ITEMS.registerSimpleBlockItem(ModBlocks.TROILITE_ROASTER);

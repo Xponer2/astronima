@@ -416,7 +416,7 @@ public final class MachineBody extends UIElement {
             case CRACKING_TOWER, POLYMERIZER, WATER_ELECTROLYZER, SABATIER_REACTOR, BOSCH_REACTOR,
                     TROILITE_ROASTER, SULFURIC_ACID_PLANT, HEAVY_WATER_CELL, TITANIUM_CELL,
                     INDUCTION_FURNACE, IRON_SMELTER, FREEZE_DRYER, DOWNS_CELL, ZONE_REFINER,
-                    HF_DIGESTER, ETCH_STATION ->
+                    HF_DIGESTER, ETCH_STATION, GRAPHITIZER, ALGAE_BIOREACTOR, ANAEROBIC_DIGESTER ->
                     new Layout.Box("none", 0, 0, 0, 0);
         };
     }
@@ -1485,6 +1485,15 @@ public final class MachineBody extends UIElement {
             // No control either: real fixed 1:6 stoichiometry, HF hand-loaded only - nothing
             // here for a player to set.
             case ETCH_STATION -> "ETCHES A WAFER WITH HAND-LOADED HF";
+            // No control either: the vessel self-heats to whichever real setpoint its own feed
+            // needs (design/carbon-fiber.md §2) - the room's own oxygen is the real decision.
+            case GRAPHITIZER -> "SELF-HEATS TO WHAT IS FED";
+            // No control either: reacts a real water bottle against whatever real CO2 the room
+            // has, always - nothing here for a player to set.
+            case ALGAE_BIOREACTOR -> "REACTS THE ROOM'S OWN CO2";
+            // No control either: digests whatever real crop waste is fed, at the real fixed
+            // 60/40 methane/CO2 split, with no power at all - nothing here for a player to set.
+            case ANAEROBIC_DIGESTER -> "DIGESTS WHATEVER WASTE IS FED";
         };
     }
 
@@ -1515,6 +1524,8 @@ public final class MachineBody extends UIElement {
                 || holder.kind() == Kind.IRON_SMELTER || holder.kind() == Kind.FREEZE_DRYER
                 || holder.kind() == Kind.DOWNS_CELL || holder.kind() == Kind.ZONE_REFINER
                 || holder.kind() == Kind.HF_DIGESTER || holder.kind() == Kind.ETCH_STATION
+                || holder.kind() == Kind.GRAPHITIZER || holder.kind() == Kind.ALGAE_BIOREACTOR
+                || holder.kind() == Kind.ANAEROBIC_DIGESTER
                 || holder.isSetByWrench()) {
             return false;
         }

@@ -75,6 +75,24 @@ public class ModModelProvider extends ModelProvider {
     }
 
     /**
+     * The hydroponic crop's four real growth stages.
+     *
+     * <p>Not {@code createCropBlock} — that convenience is {@code private} on vanilla's own
+     * {@code BlockModelGenerators} (checked this session), so this replicates it with the public
+     * parts: a hand-authored model per stage (the same "point at a file already on disk" shape
+     * {@code createNonTemplateHorizontalBlock} already uses for the telescope), wired to
+     * {@link BlockStateProperties#AGE_3} directly.
+     */
+    private static void hydroponicCrop(BlockModelGenerators blockModels) {
+        Block crop = ModBlocks.HYDROPONIC_CROP.get();
+        var dispatch = PropertyDispatch.initial(BlockStateProperties.AGE_3)
+                .generate(age -> BlockModelGenerators.plainVariant(
+                        net.minecraft.client.data.models.model.ModelLocationUtils
+                                .getModelLocation(crop, "_stage" + age)));
+        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(crop).with(dispatch));
+    }
+
+    /**
      * The decon booth, lit and unlit.
      *
      * <p>Two states because a booth that is running has to read as running from across the room —
@@ -612,6 +630,10 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.HF_DIGESTER.get());
         blockModels.createTrivialCube(ModBlocks.CLEANROOM_CONTROLLER.get());
         blockModels.createTrivialCube(ModBlocks.ETCH_STATION.get());
+        blockModels.createTrivialCube(ModBlocks.GRAPHITIZER.get());
+        blockModels.createTrivialCube(ModBlocks.ALGAE_BIOREACTOR.get());
+        blockModels.createTrivialCube(ModBlocks.ANAEROBIC_DIGESTER.get());
+        hydroponicCrop(blockModels);
         blockModels.createTrivialCube(ModBlocks.STORAGE_FRAME.get());
         blockModels.createTrivialCube(ModBlocks.STORAGE_DRIVE.get());
         blockModels.createTrivialCube(ModBlocks.STORAGE_TERMINAL.get());
@@ -702,6 +724,16 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.MYLAR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.KAPTON_TAPE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CARBON_POWDER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.GRAPHITE_POWDER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.PITCH_FIBER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.STABILIZED_FIBER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CARBON_FIBER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CARBON_COMPOSITE_PLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ALGAE_BIOMASS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LETTUCE_SEEDLING.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LETTUCE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CROP_WASTE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.FERTILIZER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SULFURIC_ACID.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.AMMONIA_CANISTER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.AMMONIA_CANISTER_EMPTY.get(), ModelTemplates.FLAT_ITEM);

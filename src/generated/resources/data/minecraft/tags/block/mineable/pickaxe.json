@@ -55,6 +55,9 @@
     "astronima:asterium_block",
     "astronima:astra_altar",
     "astronima:cleanroom_controller",
-    "astronima:etch_station"
+    "astronima:etch_station",
+    "astronima:graphitizer",
+    "astronima:algae_bioreactor",
+    "astronima:anaerobic_digester"
   ]
 }

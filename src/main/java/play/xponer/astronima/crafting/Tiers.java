@@ -95,7 +95,10 @@ public final class Tiers {
                 "astronima:mineral_salts", "minecraft:furnace",
                 // Found the same way metal_rich_ore is - a rare find, not a recipe (design/
                 // radiation.md §6) - even though nothing uses it until the power tier.
-                "astronima:rtg_core");
+                "astronima:rtg_core",
+                // A real seed bank salvaged from the wreck (design/hydroponics.md §4.3) - even
+                // though it cannot be usefully planted until hull_plate (Metal) exists.
+                "astronima:lettuce_seedling");
 
         place(Tier.ORE,
                 "astronima:ore_crusher", "astronima:crushed_ore", "astronima:crushed_ilmenite",
@@ -104,6 +107,10 @@ public final class Tiers {
 
         place(Tier.CHEMISTRY,
                 "astronima:solar_retort", "astronima:baked_silicate", "astronima:magnesium_oxide",
+                // Needs real open sky the same way the solar retort does, and hull_plate (Metal)
+                // to plant on - the same rung real sky-access machines already sit at
+                // (design/hydroponics.md §4).
+                "astronima:hydroponic_crop", "astronima:lettuce", "astronima:crop_waste",
                 "astronima:winnowing_table",
                 "astronima:carbonyl_refiner", "astronima:pure_nickel", "astronima:fluidized_bed",
                 "astronima:refractory_lining", "astronima:precision_bearing",
@@ -125,7 +132,13 @@ public final class Tiers {
                 "astronima:vr_simulation_pod", "astronima:downs_cell", "astronima:sodium",
                 "astronima:zone_refiner", "astronima:wafer_silicon",
                 "astronima:hf_digester", "astronima:hydrofluoric_acid", "astronima:gypsum",
-                "astronima:hepa_filter");
+                "astronima:hepa_filter",
+                // The machine and its carbon_powder route only - real carbon fiber needs sludge
+                // (Power), so that route is placed there instead (design/carbon-fiber.md).
+                "astronima:graphitizer", "astronima:graphite_powder",
+                // Real crop waste is the digester's own real feedstock (design/anaerobic-digestion.md)
+                // - it cannot sit any earlier than crop_waste does.
+                "astronima:anaerobic_digester", "astronima:fertilizer");
 
         place(Tier.METAL,
                 "astronima:cold_forge", "astronima:metal_billet", "astronima:tool_head",
@@ -146,12 +159,23 @@ public final class Tiers {
                 "astronima:gas_port", "astronima:gas_pump", "astronima:gas_tank",
                 "astronima:gas_valve", "astronima:purge_valve", "astronima:scrubber",
                 "astronima:lithium_hydroxide_cartridge", "astronima:dehumidifier",
+                // The dehumidifier's own real bottled output - needs the dehumidifier to exist
+                // first, so it cannot sit any earlier than this rung.
+                "minecraft:potion",
                 "astronima:pre_breathe_station", "astronima:alarm",
-                "astronima:airlock_controller", "astronima:painted_insulated_hull_plate");
+                "astronima:airlock_controller", "astronima:painted_insulated_hull_plate",
+                // A real water bottle is the algae bioreactor's own real feedstock
+                // (design/hydroponics.md) - it cannot sit any earlier than the bottle does.
+                "astronima:algae_bioreactor", "astronima:algae_biomass");
 
         place(Tier.POWER,
                 "astronima:solar_array", "astronima:power_cell", "astronima:combustion_generator",
-                "astronima:fuel_cell", "astronima:sludge", "astronima:wire_coil",
+                "astronima:fuel_cell", "astronima:sludge",
+                // Real carbon fiber's own precursor chain: melt-spun straight from sludge, so it
+                // cannot sit any earlier than sludge itself does (design/carbon-fiber.md).
+                "astronima:pitch_fiber", "astronima:stabilized_fiber", "astronima:carbon_fiber",
+                "astronima:carbon_composite_plate",
+                "astronima:wire_coil",
                 "astronima:wire_ribbon",
                 "astronima:wire_cutters", "astronima:wire_snips",
                 "astronima:power_fuse", "astronima:power_breaker",

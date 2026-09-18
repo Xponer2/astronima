@@ -52,6 +52,6 @@ reactor where the CO2 is thickest.
 
 {item:astronima:pure_nickel} feeds Sabatier — the Mond process's own product, see
 [[ore/carbonyl]]. {item:astronima:iron_powder} feeds Bosch — the fluidized bed's, see
-[[ore/fluidization]]. Bosch's own solid carbon, {item:astronima:carbon_powder}, has no recipe
-that consumes it yet — real steelmaking feedstock, kept honestly rather than inventing a use no
-phase has named.
+[[ore/fluidization]]. Bosch's own solid carbon, {item:astronima:carbon_powder}, anneals to real
+graphite in a graphitizer with the room's oxygen purged out — the same vessel in an ordinary
+breathable room just burns it away instead.

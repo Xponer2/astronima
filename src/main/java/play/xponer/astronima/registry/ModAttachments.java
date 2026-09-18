@@ -66,6 +66,23 @@ public final class ModAttachments {
                     .build());
 
     /**
+     * A player's three real macronutrient reserves — protein, carbohydrate, fat
+     * ({@code sim.physio.Macronutrition}, design/macronutrients.md).
+     *
+     * <p>Not synced, the same choice {@link #INFECTION} already makes: no HUD reads this yet
+     * (design/macronutrients.md §6), only the server-side {@code immunityOf} rewire and the
+     * {@code /astronima nutrition} report. Not copied on death, matching every other real dose in
+     * this file — a fresh body starts with full reserves rather than inheriting a starved one.
+     */
+    public static final DeferredHolder<AttachmentType<?>,
+            AttachmentType<play.xponer.astronima.physio.CarriedMacronutrition>> MACRONUTRITION =
+            ATTACHMENTS.register("macronutrition", () -> AttachmentType
+                    .builder(() -> play.xponer.astronima.physio.CarriedMacronutrition.FULL)
+                    .serialize(play.xponer.astronima.physio.CarriedMacronutrition.CODEC
+                            .fieldOf("macronutrition"))
+                    .build());
+
+    /**
      * What a player has earned toward a locked codex block — see
      * {@code progression/Unlocks.java}. Synced, deliberately the opposite of
      * {@link #INFECTION}'s own choice: the codex is a client-side renderer deciding what to draw

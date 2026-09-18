@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "astronima:metal_billet",
+    "C": "astronima:salvaged_circuit",
+    "P": "astronima:hull_plate"
+  },
+  "pattern": [
+    " C ",
+    "BPB",
+    " C "
+  ],
+  "result": {
+    "id": "astronima:anaerobic_digester"
+  }
+}

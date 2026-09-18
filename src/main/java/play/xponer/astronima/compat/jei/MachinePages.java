@@ -62,6 +62,9 @@ public record MachinePages(RecipeType<ProcessingRecipe> type, String title, Supp
     public static final RecipeType<ProcessingRecipe> ZONE_REFINER = type("zone_refiner");
     public static final RecipeType<ProcessingRecipe> HF_DIGESTER = type("hf_digester");
     public static final RecipeType<ProcessingRecipe> ETCH_STATION = type("etch_station");
+    public static final RecipeType<ProcessingRecipe> GRAPHITIZER = type("graphitizer");
+    public static final RecipeType<ProcessingRecipe> ALGAE_BIOREACTOR = type("algae_bioreactor");
+    public static final RecipeType<ProcessingRecipe> ANAEROBIC_DIGESTER = type("anaerobic_digester");
 
     /**
      * The machines that make power, air and water rather than items.
@@ -136,6 +139,12 @@ public record MachinePages(RecipeType<ProcessingRecipe> type, String title, Supp
                         ModBlocks.HF_DIGESTER::get, ProcessingRecipe::hfDigester),
                 new MachinePages(ETCH_STATION, "Wafer Etching",
                         ModBlocks.ETCH_STATION::get, ProcessingRecipe::etchStation),
+                new MachinePages(GRAPHITIZER, "Graphitizing",
+                        ModBlocks.GRAPHITIZER::get, ProcessingRecipe::graphitizer),
+                new MachinePages(ALGAE_BIOREACTOR, "Algae Bioreactor",
+                        ModBlocks.ALGAE_BIOREACTOR::get, ProcessingRecipe::algaeBioreactor),
+                new MachinePages(ANAEROBIC_DIGESTER, "Anaerobic Digester",
+                        ModBlocks.ANAEROBIC_DIGESTER::get, ProcessingRecipe::anaerobicDigester),
                 new MachinePages(SOLAR, "Solar Array",
                         ModBlocks.SOLAR_ARRAY::get, PowerPages::solarArray),
                 new MachinePages(COMBUSTION, "Combustion Generator",

@@ -29,6 +29,14 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import play.xponer.astronima.Astronima;
 import play.xponer.astronima.atmosphere.Atmosphere;
 import play.xponer.astronima.atmosphere.AtmosphereEvents;
+import play.xponer.astronima.atmosphere.SkyExposure;
+import play.xponer.astronima.block.HydroponicCropBlock;
+import play.xponer.astronima.sim.chem.HydroponicGrowth;
+import play.xponer.astronima.physio.CarriedMacronutrition;
+import play.xponer.astronima.physio.Nutrition;
+import play.xponer.astronima.physio.NutritionEvents;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import play.xponer.astronima.block.GasPortBlock;
 import play.xponer.astronima.block.GasPumpBlock;
 import play.xponer.astronima.block.GasPipeBlock;
@@ -266,6 +274,31 @@ public final class PlayerScenarios {
     private static final Object HYDROFLUORIC_ACID_BURNS_SKIN_ON_CONTACT =
             SCENARIOS.register("scenario_hydrofluoric_acid_burns_skin_on_contact",
                     () -> PlayerScenarios::hydrofluoricAcidBurnsSkinOnContactRegardlessOfArmor);
+
+    @SuppressWarnings("unused")
+    private static final Object STARVING_ONE_MACRO_DEBUFFS_AND_DROPS_IMMUNITY =
+            SCENARIOS.register("scenario_starving_one_macro_debuffs_and_drops_immunity",
+                    () -> PlayerScenarios::starvingOneMacroDebuffsAndDropsImmunityWithoutTouchingTheOthers);
+
+    @SuppressWarnings("unused")
+    private static final Object GRAPHITIZER_BURNS_INSTEAD_OF_GRAPHITIZING_IN_AN_UNPURGED_ROOM =
+            SCENARIOS.register("scenario_graphitizer_burns_instead_of_graphitizing_in_an_unpurged_room",
+                    () -> PlayerScenarios::graphitizerBurnsInsteadOfGraphitizingInAnUnpurgedRoom);
+
+    @SuppressWarnings("unused")
+    private static final Object ALGAE_BIOREACTOR_MAKES_REAL_FOOD_AND_OXYGEN_FROM_REAL_CO2 =
+            SCENARIOS.register("scenario_algae_bioreactor_makes_real_food_and_oxygen_from_real_co2",
+                    () -> PlayerScenarios::algaeBioreactorMakesRealFoodAndOxygenFromRealCo2);
+
+    @SuppressWarnings("unused")
+    private static final Object HYDROPONIC_CROP_GROWS_FROM_REAL_SUNLIGHT_CO2_AND_WATER_VAPOUR =
+            SCENARIOS.register("scenario_hydroponic_crop_grows_from_real_sunlight_co2_and_water_vapour",
+                    () -> PlayerScenarios::hydroponicCropGrowsFromRealSunlightCo2AndWaterVapour);
+
+    @SuppressWarnings("unused")
+    private static final Object ANAEROBIC_DIGESTER_RUNS_WITH_NO_POWER_AT_ALL =
+            SCENARIOS.register("scenario_anaerobic_digester_runs_with_no_power_at_all",
+                    () -> PlayerScenarios::anaerobicDigesterRunsWithNoPowerAtAllAndMakesRealBiogasAndFertilizer);
 
     @SuppressWarnings("unused")
     private static final Object DATA_CELL_LOGS_AND_RETURNS_A_REAL_CRATE =
@@ -1568,6 +1601,334 @@ public final class PlayerScenarios {
     }
 
     /**
+     * <em>"I feed the algae bioreactor a real water bottle, wire it to a charged cell, and
+     * breathe in the room - does it actually make real food and real oxygen matching the CO2 I
+     * gave up, or is this a black box making air and food from nothing? And with the power cell
+     * pulled, does it just sit there instead of splitting water for free?"</em>
+     *
+     * <p>The same real reasoning {@code WaterElectrolyzerBlockEntity}'s own two scenarios already
+     * proved for its own reaction: nothing about photosynthesis has a manual-labour equivalent
+     * either, so an unpowered reactor must make real zero progress, not a slow trickle
+     * (design/hydroponics.md §1.1, §3).
+     */
+    private static void algaeBioreactorMakesRealFoodAndOxygenFromRealCo2(GameTestHelper helper) {
+        BlockPos machinePos = new BlockPos(2, 3, 2);
+        BlockPos cellPos = machinePos.offset(1, 0, 0);
+        sealPocketUnder(helper, machinePos);
+        helper.setBlock(machinePos,
+                ModBlocks.ALGAE_BIOREACTOR.get().defaultBlockState());
+        helper.setBlock(cellPos, ModBlocks.POWER_CELL.get().defaultBlockState());
+
+        var reactor = helper.getBlockEntity(machinePos,
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.class);
+        var cell = helper.getBlockEntity(cellPos, PowerCellBlockEntity.class);
+        Atmosphere atmosphere = Atmosphere.get(helper.getLevel());
+        atmosphere.invalidate(helper.absolutePos(machinePos.below()));
+        RoomState room = atmosphere.roomAt(helper.absolutePos(machinePos.below()));
+        if (reactor == null || cell == null || room == null) {
+            helper.fail("Setup failed: reactor, cell or receiving room missing");
+            return;
+        }
+        for (Gas gas : Gas.values()) {
+            room.removeGas(gas, room.gases().get(gas));
+        }
+        room.addGasAt(Gas.CARBON_DIOXIDE,
+                play.xponer.astronima.sim.chem.Photosynthesis.CO2_PER_BOTTLE_MOL * 2, 293.15);
+        cell.charge(PowerCellBlockEntity.CAPACITY_J);
+
+        double co2Before = room.gases().get(Gas.CARBON_DIOXIDE);
+        double o2Before = room.gases().get(Gas.OXYGEN);
+        reactor.setItem(
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.SLOT_INPUT,
+                net.minecraft.world.item.alchemy.PotionContents.createItemStack(
+                        net.minecraft.world.item.Items.POTION,
+                        net.minecraft.world.item.alchemy.Potions.WATER));
+        runMachine(reactor,
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.BATCH_WORK + 40);
+
+        double co2Spent = co2Before - room.gases().get(Gas.CARBON_DIOXIDE);
+        double o2Made = room.gases().get(Gas.OXYGEN) - o2Before;
+        if (co2Spent <= 0 || o2Made <= 0) {
+            helper.fail("A powered, fed batch spent " + co2Spent + " mol CO2 and made " + o2Made
+                    + " mol O2 - both should be positive");
+            return;
+        }
+        if (Math.abs(co2Spent - o2Made) > 1e-6) {
+            helper.fail("CO2 spent and O2 made were not equal (" + co2Spent + " vs " + o2Made
+                    + ") - real photosynthesis is 1:1");
+            return;
+        }
+        ItemStack biomassOut = reactor.getItem(
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.SLOT_OUTPUT);
+        if (!biomassOut.is(ModItems.ALGAE_BIOMASS.get()) || biomassOut.getCount() <= 0) {
+            helper.fail("A powered, fed, CO2-ample batch produced " + biomassOut
+                    + " instead of real algae biomass");
+            return;
+        }
+        if (!reactor.getItem(
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.SLOT_INPUT).isEmpty()) {
+            helper.fail("The water bottle survived a finished batch");
+            return;
+        }
+
+        // Second: the same real feed and CO2, this time with no power cell at all.
+        helper.setBlock(cellPos, Blocks.AIR.defaultBlockState());
+        room.addGasAt(Gas.CARBON_DIOXIDE,
+                play.xponer.astronima.sim.chem.Photosynthesis.CO2_PER_BOTTLE_MOL * 2, 293.15);
+        double co2BeforeUnpowered = room.gases().get(Gas.CARBON_DIOXIDE);
+        double o2BeforeUnpowered = room.gases().get(Gas.OXYGEN);
+        reactor.setItem(
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.SLOT_INPUT,
+                net.minecraft.world.item.alchemy.PotionContents.createItemStack(
+                        net.minecraft.world.item.Items.POTION,
+                        net.minecraft.world.item.alchemy.Potions.WATER));
+        runMachine(reactor,
+                (play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.BATCH_WORK + 40) * 3);
+
+        if (room.gases().get(Gas.CARBON_DIOXIDE) != co2BeforeUnpowered
+                || room.gases().get(Gas.OXYGEN) != o2BeforeUnpowered) {
+            helper.fail("An unpowered reactor still changed the room's own gases - photosynthesis"
+                    + " must not run for free");
+            return;
+        }
+        if (reactor.getItem(
+                play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity.SLOT_INPUT).isEmpty()) {
+            helper.fail("The water bottle was consumed with no power ever supplied");
+            return;
+        }
+        helper.succeed();
+    }
+
+    /**
+     * <em>"I feed the digester real crop waste with no power hooked up at all - does it actually
+     * digest a real batch anyway, put real biogas at the real 60/40 methane/CO2 split into the
+     * room, and give me real fertilizer back? And if I leave it empty, does it just sit there?"</em>
+     *
+     * <p>The row that matters most (design/anaerobic-digestion.md §5): unlike every other machine
+     * this session has built, this one's own real claim is that it does <em>not</em> need power -
+     * so the only positive case worth proving is the unpowered one, not a powered one first.
+     */
+    private static void anaerobicDigesterRunsWithNoPowerAtAllAndMakesRealBiogasAndFertilizer(
+            GameTestHelper helper) {
+        BlockPos machinePos = new BlockPos(2, 3, 2);
+        sealPocketUnder(helper, machinePos);
+        helper.setBlock(machinePos, ModBlocks.ANAEROBIC_DIGESTER.get().defaultBlockState());
+
+        var digester = helper.getBlockEntity(machinePos,
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.class);
+        Atmosphere atmosphere = Atmosphere.get(helper.getLevel());
+        atmosphere.invalidate(helper.absolutePos(machinePos.below()));
+        RoomState room = atmosphere.roomAt(helper.absolutePos(machinePos.below()));
+        if (digester == null || room == null) {
+            helper.fail("Setup failed: digester or receiving room missing");
+            return;
+        }
+        for (Gas gas : Gas.values()) {
+            room.removeGas(gas, room.gases().get(gas));
+        }
+
+        double methaneBefore = room.gases().get(Gas.METHANE);
+        double co2Before = room.gases().get(Gas.CARBON_DIOXIDE);
+        digester.setItem(
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.SLOT_INPUT,
+                new ItemStack(ModItems.CROP_WASTE.get()));
+        // No power cell anywhere near it - the whole point of this scenario.
+        runMachine(digester,
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.BATCH_WORK + 40);
+
+        double methaneMade = room.gases().get(Gas.METHANE) - methaneBefore;
+        double co2Made = room.gases().get(Gas.CARBON_DIOXIDE) - co2Before;
+        if (methaneMade <= 0 || co2Made <= 0) {
+            helper.fail("An unpowered, fed digester made " + methaneMade + " mol methane and "
+                    + co2Made + " mol CO2 - both should be positive with no power at all");
+            return;
+        }
+        double totalBiogas = methaneMade + co2Made;
+        if (Math.abs(methaneMade / totalBiogas - play.xponer.astronima.sim.chem.AnaerobicDigestion
+                .METHANE_FRACTION) > 1e-6) {
+            helper.fail("Real biogas should be " + play.xponer.astronima.sim.chem.AnaerobicDigestion
+                    .METHANE_FRACTION + " methane by mole fraction - got " + (methaneMade / totalBiogas));
+            return;
+        }
+        ItemStack fertilizerOut = digester.getItem(
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.SLOT_OUTPUT);
+        if (!fertilizerOut.is(ModItems.FERTILIZER.get()) || fertilizerOut.getCount() <= 0) {
+            helper.fail("A fed, unpowered batch produced " + fertilizerOut
+                    + " instead of real fertilizer");
+            return;
+        }
+        if (!digester.getItem(
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.SLOT_INPUT).isEmpty()) {
+            helper.fail("The crop waste survived a finished batch");
+            return;
+        }
+
+        // Second: empty, it makes no progress at all.
+        BlockPos emptyPos = new BlockPos(6, 3, 6);
+        sealPocketUnder(helper, emptyPos);
+        helper.setBlock(emptyPos, ModBlocks.ANAEROBIC_DIGESTER.get().defaultBlockState());
+        var emptyDigester = helper.getBlockEntity(emptyPos,
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.class);
+        if (emptyDigester == null) {
+            helper.fail("The second digester has no block entity");
+            return;
+        }
+        runMachine(emptyDigester,
+                (play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.BATCH_WORK + 40) * 3);
+        if (!emptyDigester.getItem(
+                play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity.SLOT_OUTPUT).isEmpty()) {
+            helper.fail("An empty digester produced fertilizer from nothing");
+            return;
+        }
+        helper.succeed();
+    }
+
+    /**
+     * <em>"I plant a seedling on a lit hull plate with real CO2 and water vapour in the air
+     * around it - does it actually grow through all four real stages, spending real CO2 and
+     * releasing real O2 1:1 the same way A1's own photosynthesis does? If I roof it over, does
+     * it just hold rather than die? And if I harvest it at the top, do I get real lettuce back
+     * and a plant that keeps growing instead of one that is gone?"</em>
+     *
+     * <p>Through the real door, {@link HydroponicCropBlock#randomTick} via its own
+     * {@link HydroponicCropBlock#simulateTick} debug hook (the same one {@code MoldBlock} already
+     * opens for its own random-tick-paced block, design/hydroponics.md §4.5) - not the sim class
+     * directly, since the row that matters most here is whether the real block reads a real
+     * {@code RoomState} and a real {@link SkyExposure} value correctly, not just whether
+     * {@link HydroponicGrowth#favorable} is correct in isolation (that claim already has its own
+     * unit tests). The crop cannot itself seal a room the way a solid machine can (rule 2: checked
+     * this session - {@code noCollision()} classifies it {@code BlockKind.OPEN}, the same as air,
+     * in {@code AirBlockKinds}), so unlike the solar retort's own {@code sealPocketUnder} scenarios
+     * this one does not attempt to keep the room sealed at all: it plants the crop in the open,
+     * under real sky, and reads whatever room {@code roomTouching} actually finds there - open air
+     * still resolves to a real, gas-settable {@code RoomState} (only {@code Atmosphere.tick()}'s
+     * own periodic vent/reset touches it, never a direct {@code addGasAt} call), so the CO2 and
+     * water vapour breathing would really put there are set directly, the same shortcut A1's own
+     * scenario already takes for its water bottle's CO2.
+     */
+    private static void hydroponicCropGrowsFromRealSunlightCo2AndWaterVapour(GameTestHelper helper) {
+        ServerLevel level = helper.getLevel();
+        Atmosphere atmosphere = Atmosphere.get(level);
+
+        // Phase 1: real sky, real CO2, real water vapour - all three favourable.
+        BlockPos floorPos = new BlockPos(2, 2, 2);
+        BlockPos cropPos = floorPos.above();
+        BlockPos absCrop = helper.absolutePos(cropPos);
+        helper.setBlock(floorPos, ModBlocks.HULL_PLATE.get().defaultBlockState());
+        helper.setBlock(cropPos, ModBlocks.HYDROPONIC_CROP.get().defaultBlockState());
+
+        if (SkyExposure.sunlightAt(level, absCrop) <= 0) {
+            helper.fail("No sunlight on a crop under open sky - the crop can never grow and"
+                    + " every other assertion here is vacuous");
+            return;
+        }
+        atmosphere.invalidate(absCrop);
+        RoomState room = atmosphere.roomTouching(absCrop);
+        if (room == null) {
+            helper.fail("Setup failed: no room touches the crop, so nothing here can be tested");
+            return;
+        }
+        for (Gas gas : Gas.values()) {
+            room.removeGas(gas, room.gases().get(gas));
+        }
+        room.addGasAt(Gas.CARBON_DIOXIDE, HydroponicGrowth.CO2_PER_GROWTH_MOL * 50, 293.15);
+        room.addGasAt(Gas.WATER_VAPOR, 10.0, 293.15);
+
+        // Growing the crop repeatedly calls setBlockAndUpdate on its own position, which
+        // dirties and rescans the room (gas carries forward through the rescan, see
+        // Atmosphere#inheritGas - but the OLD RoomState object does not, so it must be
+        // re-fetched fresh, not read off a reference held from before growth started).
+        double co2Before = atmosphere.roomTouching(absCrop).gases().get(Gas.CARBON_DIOXIDE);
+        double o2Before = atmosphere.roomTouching(absCrop).gases().get(Gas.OXYGEN);
+        RandomSource random = level.getRandom();
+        for (int i = 0; i < 400
+                && level.getBlockState(absCrop).getValue(BlockStateProperties.AGE_3) < HydroponicGrowth.MAX_AGE;
+                i++) {
+            HydroponicCropBlock.simulateTick(level, absCrop, random);
+        }
+        int matureAge = level.getBlockState(absCrop).getValue(BlockStateProperties.AGE_3);
+        if (matureAge != HydroponicGrowth.MAX_AGE) {
+            helper.fail("400 favourable random ticks did not mature the crop - stuck at age "
+                    + matureAge);
+            return;
+        }
+        RoomState roomAfterGrowth = atmosphere.roomTouching(absCrop);
+        if (roomAfterGrowth == null) {
+            helper.fail("The room touching the crop vanished after growth");
+            return;
+        }
+        double co2Spent = co2Before - roomAfterGrowth.gases().get(Gas.CARBON_DIOXIDE);
+        double o2Made = roomAfterGrowth.gases().get(Gas.OXYGEN) - o2Before;
+        double expectedSpent = HydroponicGrowth.MAX_AGE * HydroponicGrowth.CO2_PER_GROWTH_MOL;
+        if (Math.abs(co2Spent - expectedSpent) > 1e-9) {
+            helper.fail("Growing through all " + HydroponicGrowth.MAX_AGE + " real stages should"
+                    + " spend " + expectedSpent + " mol CO2 - spent " + co2Spent);
+            return;
+        }
+        if (Math.abs(co2Spent - o2Made) > 1e-9) {
+            helper.fail("CO2 spent and O2 made were not equal (" + co2Spent + " vs " + o2Made
+                    + ") - real photosynthesis is 1:1");
+            return;
+        }
+
+        // Phase 2: roofed over - light missing holds the stage, no loss, exactly like the
+        // solar retort's own "roofed over" negative test.
+        BlockPos floorPos2 = new BlockPos(6, 2, 6);
+        BlockPos cropPos2 = floorPos2.above();
+        BlockPos absCrop2 = helper.absolutePos(cropPos2);
+        helper.setBlock(floorPos2, ModBlocks.HULL_PLATE.get().defaultBlockState());
+        helper.setBlock(cropPos2, ModBlocks.HYDROPONIC_CROP.get().defaultBlockState());
+        helper.setBlock(cropPos2.above(), ModBlocks.HULL_PLATE.get().defaultBlockState());
+        if (SkyExposure.sunlightAt(level, absCrop2) > 0) {
+            helper.fail("A crop roofed directly over should have no sunlight to read");
+            return;
+        }
+        atmosphere.invalidate(absCrop2);
+        RoomState room2 = atmosphere.roomTouching(absCrop2);
+        if (room2 == null) {
+            helper.fail("Setup failed: no room touches the roofed crop");
+            return;
+        }
+        for (Gas gas : Gas.values()) {
+            room2.removeGas(gas, room2.gases().get(gas));
+        }
+        room2.addGasAt(Gas.CARBON_DIOXIDE, HydroponicGrowth.CO2_PER_GROWTH_MOL * 50, 293.15);
+        room2.addGasAt(Gas.WATER_VAPOR, 10.0, 293.15);
+        double co2BeforeRoofed = atmosphere.roomTouching(absCrop2).gases().get(Gas.CARBON_DIOXIDE);
+        for (int i = 0; i < 200; i++) {
+            HydroponicCropBlock.simulateTick(level, absCrop2, random);
+        }
+        int ageUnderRoof = level.getBlockState(absCrop2).getValue(BlockStateProperties.AGE_3);
+        if (ageUnderRoof != 0) {
+            helper.fail("A crop with no sunlight grew anyway - age " + ageUnderRoof);
+            return;
+        }
+        double co2AfterRoofed = atmosphere.roomTouching(absCrop2).gases().get(Gas.CARBON_DIOXIDE);
+        if (co2AfterRoofed != co2BeforeRoofed) {
+            helper.fail("A held crop still spent real CO2 - a missing condition must hold,"
+                    + " not partially run");
+            return;
+        }
+
+        // Phase 3: harvest at maturity - real pick-and-eat, not destroy-and-replant.
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        level.getBlockState(absCrop).useWithoutItem(level, player,
+                new net.minecraft.world.phys.BlockHitResult(
+                        net.minecraft.world.phys.Vec3.atCenterOf(absCrop), Direction.UP, absCrop, false));
+        int ageAfterHarvest = level.getBlockState(absCrop).getValue(BlockStateProperties.AGE_3);
+        if (ageAfterHarvest != HydroponicGrowth.HARVESTED_AGE) {
+            helper.fail("Harvesting a mature plant should return it to age "
+                    + HydroponicGrowth.HARVESTED_AGE + ", not " + ageAfterHarvest);
+            return;
+        }
+        helper.assertItemEntityCountIs(ModItems.LETTUCE.get(), cropPos, 2.0, 1);
+        // Real crop waste, Part E's own real feedstock (design/anaerobic-digestion.md §0) - the
+        // same real harvest, a second real fact about it.
+        helper.assertItemEntityCountIs(ModItems.CROP_WASTE.get(), cropPos, 2.0, 1);
+        helper.succeed();
+    }
+
+    /**
      * <em>"I set up both machines in one sealed room - loaded nickel, filled the room with CO2
      * and hydrogen the way exhaling and an electrolyzer would - does the Sabatier reactor
      * actually draw both down and make methane and water, or does it run on just one?"</em>
@@ -1863,6 +2224,106 @@ public final class PlayerScenarios {
         if (oreAfter.getCount() >= 1) {
             helper.fail("The crushed-ore feed survived a finished batch untouched (" + oreAfter
                     + ")");
+            return;
+        }
+        helper.succeed();
+    }
+
+    /**
+     * <em>"I anneal a charge of carbon powder in a Graphitizer, in a room I forgot to purge -
+     * does it actually just sit there and eventually make graphite anyway, or does the real
+     * hazard bite: does hot carbon genuinely burn in the room's own air, spending real oxygen and
+     * making real CO2, and come out with nothing to show for the batch? And in a room I actually
+     * purged, does the same charge come out clean, with no gas spent at all?"</em>
+     *
+     * <p>The row design/carbon-fiber.md §6 calls out as the one that matters most: without it,
+     * the Graphitizer's whole "oxygen at the high setpoint is a real reaction, not a friendly
+     * stall" claim is unproven, and a player would never learn why the room has to be purged
+     * before the batch finishes.
+     */
+    private static void graphitizerBurnsInsteadOfGraphitizingInAnUnpurgedRoom(GameTestHelper helper) {
+        BlockPos inside = new BlockPos(3, 2, 3);
+        BlockPos graphitizerPos = inside.offset(1, 0, 0);
+        for (int dx = -3; dx <= 3; dx++) {
+            for (int dy = -2; dy <= 3; dy++) {
+                for (int dz = -3; dz <= 3; dz++) {
+                    int ring = Math.max(Math.abs(dx), Math.max(Math.abs(dy), Math.abs(dz)));
+                    helper.setBlock(inside.offset(dx, dy, dz), ring <= 1
+                            ? Blocks.AIR.defaultBlockState()
+                            : ModBlocks.HULL_PLATE.get().defaultBlockState());
+                }
+            }
+        }
+        helper.setBlock(graphitizerPos, ModBlocks.GRAPHITIZER.get().defaultBlockState());
+
+        Atmosphere atmosphere = Atmosphere.get(helper.getLevel());
+        atmosphere.invalidate(helper.absolutePos(inside));
+        Atmosphere.RoomReading reading = atmosphere.readingAt(helper.absolutePos(inside));
+        if (reading == null || !reading.sealed()) {
+            helper.fail("Setup failed: the Graphitizer's room is not sealed");
+            return;
+        }
+        var graphitizer = helper.getBlockEntity(graphitizerPos,
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.class);
+        RoomState room = atmosphere.roomAt(helper.absolutePos(inside));
+        if (graphitizer == null || room == null) {
+            helper.fail("Setup failed: Graphitizer or room missing");
+            return;
+        }
+        for (Gas gas : Gas.values()) {
+            room.removeGas(gas, room.gases().get(gas));
+        }
+
+        // First: an unpurged room, real oxygen left breathable. The batch must not stall - it
+        // must run and burn the charge to nothing.
+        room.addGasAt(Gas.OXYGEN, 50.0, 293.15);
+        graphitizer.setItem(
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.SLOT_INPUT,
+                new ItemStack(ModItems.CARBON_POWDER.get()));
+        double o2Before = room.gases().get(Gas.OXYGEN);
+        runMachine(graphitizer,
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.BATCH_WORK + 40);
+
+        if (!(room.gases().get(Gas.OXYGEN) < o2Before)) {
+            helper.fail("The Graphitizer did not draw the room's oxygen down while running hot in"
+                    + " a breathable room (" + o2Before + " -> " + room.gases().get(Gas.OXYGEN)
+                    + ")");
+            return;
+        }
+        if (!(room.gases().get(Gas.CARBON_DIOXIDE) > 1e-9)) {
+            helper.fail("A batch run hot with oxygen plentiful made no CO2 - the combustion branch"
+                    + " never ran");
+            return;
+        }
+        ItemStack burnedOutput = graphitizer.getItem(
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.SLOT_OUTPUT);
+        if (!burnedOutput.isEmpty()) {
+            helper.fail("A charge burned away in an unpurged room still produced " + burnedOutput
+                    + " - it should have nothing to show for it");
+            return;
+        }
+
+        // Second: the same real feed, this time in a room actually purged. The batch must come
+        // out clean, spending no gas at all.
+        for (Gas gas : Gas.values()) {
+            room.removeGas(gas, room.gases().get(gas));
+        }
+        graphitizer.setItem(
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.SLOT_INPUT,
+                new ItemStack(ModItems.CARBON_POWDER.get()));
+        runMachine(graphitizer,
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.BATCH_WORK + 40);
+
+        if (room.gases().get(Gas.CARBON_DIOXIDE) > 1e-9) {
+            helper.fail("A batch run in a purged room made CO2 - it should have annealed cleanly,"
+                    + " not burned");
+            return;
+        }
+        ItemStack cleanOutput = graphitizer.getItem(
+                play.xponer.astronima.block.entity.GraphitizerBlockEntity.SLOT_OUTPUT);
+        if (!cleanOutput.is(ModItems.GRAPHITE_POWDER.get()) || cleanOutput.getCount() <= 0) {
+            helper.fail("A batch run in a purged room produced " + cleanOutput
+                    + " instead of real graphite powder");
             return;
         }
         helper.succeed();
@@ -2299,6 +2760,105 @@ public final class PlayerScenarios {
         if (severity != play.xponer.astronima.sim.physio.ChemicalBurn.Severity.CRITICAL) {
             helper.fail("One full item's own real mass should already classify CRITICAL - got "
                     + severity);
+            return;
+        }
+        helper.succeed();
+    }
+
+    /**
+     * <em>"I starve for a real while, eat real food, and starve again of just one macro while the
+     * other two stay full - does the right real food raise the right real reserve, does the right
+     * real symptom show up for the right deficiency, does immunity actually read the scarcest
+     * reserve rather than an average, and does feeding back up stop the debuff from renewing?"</em>
+     *
+     * <p>Through the real door {@link Nutrition#consumed}/{@link Nutrition#tick} already are -
+     * {@link NutritionEvents} is pure wiring onto those two (design/macronutrients.md §3e), so
+     * this is the real decision, not a shortcut around it.
+     */
+    private static void starvingOneMacroDebuffsAndDropsImmunityWithoutTouchingTheOthers(
+            GameTestHelper helper) {
+        var player = helper.makeMockPlayer(GameType.SURVIVAL);
+        // A real, long stretch of real time - enough to hit hard zero on every reserve, at the
+        // real default METABOLISM_SCALE the tick call itself applies.
+        Nutrition.tick(player, 400.0 * 24.0 * 3600.0);
+        var starved = Nutrition.of(player);
+        if (starved.protein() > 0 || starved.carbohydrate() > 0 || starved.fat() > 0) {
+            helper.fail("400 real days of fasting should hit hard zero on every reserve - got "
+                    + starved);
+            return;
+        }
+
+        // Real algae biomass is protein-heavy; real lettuce is low across the board - eating
+        // each should raise the reserves in that real, distinct shape.
+        Nutrition.consumed(player, new ItemStack(ModItems.ALGAE_BIOMASS.get()));
+        var afterAlgae = Nutrition.of(player);
+        if (!(afterAlgae.protein() > afterAlgae.carbohydrate()
+                && afterAlgae.carbohydrate() > afterAlgae.fat() && afterAlgae.fat() > 0)) {
+            helper.fail("Real algae biomass should raise protein most, then carbohydrate, then"
+                    + " fat least, all three above zero - got " + afterAlgae);
+            return;
+        }
+        Nutrition.consumed(player, new ItemStack(ModItems.LETTUCE.get()));
+        var afterLettuce = Nutrition.of(player);
+        if (!(afterLettuce.protein() > afterAlgae.protein())) {
+            helper.fail("Real lettuce should still raise protein by some real amount, however"
+                    + " small - it did not move at all");
+            return;
+        }
+
+        // Starve carbohydrate alone this time, holding protein and fat full by hand - the row
+        // that matters most (design/macronutrients.md §5 test 5): a severe fat deficiency must
+        // never mask an equally-real carbohydrate one, and immunity must read the true minimum.
+        var carbOnly = new play.xponer.astronima.sim.physio.Macronutrition.State(1.0, 0.0, 1.0);
+        player.setData(play.xponer.astronima.registry.ModAttachments.MACRONUTRITION.get(),
+                CarriedMacronutrition.of(carbOnly));
+        // Both real symptoms fired during the earlier hard-zero phase above and have not had a
+        // real tick to expire since - clear them so this phase's own checks are not reading a
+        // stale instance from before this player was fed at all.
+        player.removeEffect(net.minecraft.world.effect.MobEffects.WEAKNESS);
+        player.removeEffect(net.minecraft.world.effect.MobEffects.MINING_FATIGUE);
+        Nutrition.tick(player, 1.0);
+        if (!player.hasEffect(net.minecraft.world.effect.MobEffects.MINING_FATIGUE)) {
+            helper.fail("Starving of carbohydrate alone should apply real Mining Fatigue"
+                    + " (hypoglycaemic fatigue's own real mechanical analogue), even with protein"
+                    + " and fat both full");
+            return;
+        }
+        if (player.hasEffect(net.minecraft.world.effect.MobEffects.WEAKNESS)) {
+            helper.fail("A full protein reserve should not itself earn real Weakness");
+            return;
+        }
+        // Immunity.of has its own real floor (SPENT, 0.15) - even a totally spent body keeps
+        // some immune function - so zero sufficiency reads as that floor, not absolute zero.
+        // The claim under test is still real: it must sit at that floor, not somewhere higher
+        // an average with the two full reserves would put it.
+        double immunityWhileStarved = play.xponer.astronima.physio.Infections.immunityOf(player);
+        double expectedFloor = play.xponer.astronima.sim.pathogen.Immunity.SPENT;
+        if (Math.abs(immunityWhileStarved - expectedFloor) > 1e-9) {
+            helper.fail("Immunity should read the scarcest real reserve (zero carbohydrate) and"
+                    + " sit at Immunity's own real floor of " + expectedFloor + ", not an average"
+                    + " with the two full reserves - got " + immunityWhileStarved);
+            return;
+        }
+
+        // Feed carbohydrate back up past the real recovery threshold - the state itself must
+        // show real recovery, the claim this design actually makes (design/macronutrients.md §3f).
+        // Algae biomass's own real carbohydrate share (0.20) at its own real nutrition (3, so a
+        // 0.15 feeding scale) is +0.03 carbohydrate per feeding - 20 feedings clears 0.4 with
+        // real headroom rather than landing right on the boundary.
+        for (int i = 0; i < 20; i++) {
+            Nutrition.consumed(player, new ItemStack(ModItems.ALGAE_BIOMASS.get()));
+        }
+        double recoveredCarb = Nutrition.of(player).carbohydrate();
+        if (!(recoveredCarb > 0.4)) {
+            helper.fail("Twenty real feedings of a real carbohydrate-bearing food should have"
+                    + " recovered carbohydrate past the real clear threshold - got " + recoveredCarb);
+            return;
+        }
+        double immunityAfterRecovery = play.xponer.astronima.physio.Infections.immunityOf(player);
+        if (!(immunityAfterRecovery > immunityWhileStarved)) {
+            helper.fail("Immunity should recover once the scarcest reserve does - stayed at "
+                    + immunityAfterRecovery);
             return;
         }
         helper.succeed();
@@ -6177,6 +6737,11 @@ public final class PlayerScenarios {
     private static void anIllnessHidesThenShows(GameTestHelper helper) {
         var player = helper.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL);
         player.getFoodData().setFoodLevel(20);
+        // immunityOf reads real macronutrient sufficiency now, not vanilla hunger
+        // (design/macronutrients.md §3g) - the attachment already defaults full, named here so
+        // a reader does not go looking for what setFoodLevel(20) above still does (nothing, to
+        // immunity specifically; it is kept for the vanilla starvation/regen this test does not
+        // otherwise touch).
 
         if (!play.xponer.astronima.physio.Infections.infect(player,
                 play.xponer.astronima.sim.pathogen.Strain.Source.CRYOPHILIC)) {
@@ -6200,7 +6765,9 @@ public final class PlayerScenarios {
         }
 
         // An exhausted body, past incubation: it shows, and it shows a borrowed symptom.
-        player.getFoodData().setFoodLevel(2);
+        // A real, long stretch of real fasting - the real way to starve immunity now
+        // (design/macronutrients.md §3g), not vanilla hunger.
+        Nutrition.tick(player, 400.0 * 24.0 * 3600.0);
         java.util.Map<play.xponer.astronima.sim.physio.Ailment, play.xponer.astronima.sim.physio.Ailment.Severity> showing = new java.util.EnumMap<>(play.xponer.astronima.sim.physio.Ailment.class);
         // Long, because a cryophilic strain is chronic by design: slow, and hard to shift. A
         // scenario that only waited a stage's worth would be measuring impatience.
@@ -6218,6 +6785,8 @@ public final class PlayerScenarios {
 
         // Fed and rested, the mild one loses. Sometimes the correct answer is nothing.
         player.getFoodData().setFoodLevel(20);
+        player.setData(play.xponer.astronima.registry.ModAttachments.MACRONUTRITION.get(),
+                CarriedMacronutrition.FULL);
         java.util.Map<play.xponer.astronima.sim.physio.Ailment, play.xponer.astronima.sim.physio.Ailment.Severity> beaten = new java.util.EnumMap<>(play.xponer.astronima.sim.physio.Ailment.class);
         drive(player, strain.stageSeconds() * 30, beaten);
         if (player.getData(play.xponer.astronima.registry.ModAttachments.INFECTION).isIll()) {

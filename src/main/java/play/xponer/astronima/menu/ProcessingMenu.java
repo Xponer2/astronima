@@ -150,7 +150,8 @@ public final class ProcessingMenu {
     public enum Kind { CRUSHER, SEPARATOR, FORGE, RETORT, WINNOWER, REFINER, FLUIDBED, ELECTROLYSIS, SLS,
         CRACKING_TOWER, POLYMERIZER, WATER_ELECTROLYZER, SABATIER_REACTOR, BOSCH_REACTOR,
         TROILITE_ROASTER, SULFURIC_ACID_PLANT, HEAVY_WATER_CELL, TITANIUM_CELL, INDUCTION_FURNACE,
-        IRON_SMELTER, FREEZE_DRYER, DOWNS_CELL, ZONE_REFINER, HF_DIGESTER, ETCH_STATION }
+        IRON_SMELTER, FREEZE_DRYER, DOWNS_CELL, ZONE_REFINER, HF_DIGESTER, ETCH_STATION, GRAPHITIZER,
+        ALGAE_BIOREACTOR, ANAEROBIC_DIGESTER }
 
     /** Kinds that split their feed into two products and so need three item slots.
      *
@@ -354,6 +355,16 @@ public final class ProcessingMenu {
             // (design/halogens.md §42): the only door into it is the block's own hand-load
             // interaction, never this generic check.
             case ETCH_STATION -> stack.is(play.xponer.astronima.registry.ModItems.WAFER_SILICON.get());
+            // Any of the three real feeds — which one decides the setpoint the vessel heats
+            // itself to (design/carbon-fiber.md §2): no dial, so the slot has to take all three.
+            case GRAPHITIZER -> stack.is(play.xponer.astronima.registry.ModItems.CARBON_POWDER.get())
+                    || stack.is(play.xponer.astronima.registry.ModItems.PITCH_FIBER.get())
+                    || stack.is(play.xponer.astronima.registry.ModItems.STABILIZED_FIBER.get());
+            // A real water bottle, the same predicate the water electrolyzer already uses -
+            // the room's own CO2, not this slot, is the reaction's other real reagent.
+            case ALGAE_BIOREACTOR -> play.xponer.astronima.block.entity
+                    .WaterElectrolyzerBlockEntity.isWaterBottle(stack);
+            case ANAEROBIC_DIGESTER -> stack.is(play.xponer.astronima.registry.ModItems.CROP_WASTE.get());
         };
     }
 
@@ -440,6 +451,12 @@ public final class ProcessingMenu {
             case ETCH_STATION -> "wafer-grade silicon and hydrofluoric acid — real 1:6"
                     + " stoichiometry, HF hand-loaded only, etched into a real die and"
                     + " fluorosilicic acid";
+            case GRAPHITIZER -> "carbon powder, pitch fiber, or stabilized fiber — whichever one"
+                    + " decides the real temperature it self-heats to";
+            case ALGAE_BIOREACTOR -> "a water bottle — reacted against real CO2 in the room, real"
+                    + " 1:1, into food and oxygen";
+            case ANAEROBIC_DIGESTER -> "real crop waste — digested with no power at all into real"
+                    + " biogas (60% methane, 40% CO2) vented into the room, and real fertilizer";
         };
     }
 
@@ -685,6 +702,15 @@ public final class ProcessingMenu {
             // No control either: etches whatever wafer and hand-loaded HF it is fed, at the real
             // fixed 1:6 stoichiometry — nothing here for a player to set.
             case play.xponer.astronima.block.entity.EtchStationBlockEntity station -> 0;
+            // No control either: self-heats to whatever real setpoint its own feed needs
+            // (design/carbon-fiber.md §2) — nothing here for a player to set.
+            case play.xponer.astronima.block.entity.GraphitizerBlockEntity graphitizer -> 0;
+            // No control either: reacts whatever water bottle is fed against the room's own CO2,
+            // always - nothing here for a player to set.
+            case play.xponer.astronima.block.entity.AlgaeBioreactorBlockEntity reactor -> 0;
+            // No control either: digests whatever real crop waste is fed, at the real fixed
+            // 60/40 methane/CO2 split, with no power at all - nothing here for a player to set.
+            case play.xponer.astronima.block.entity.AnaerobicDigesterBlockEntity digester -> 0;
             default -> 0;
         };
     }

@@ -196,25 +196,30 @@ public final class Infections {
         }
     }
 
-    /**
-     * How hard this body is pushing back.
-     *
-     * <p><strong>Hunger only, and the first version was worse than useless.</strong> It read rest
-     * off the published vitals — which the infection's own symptoms are written into, so being ill
-     * made you tired, being tired made you weaker, and the illness fed on itself. A feedback loop
-     * nobody designed is not emergent behaviour, it is a bug that looks like one.
-     *
-     * <p>Rest is the second input the model wants and the mod does not track it yet; until it does,
-     * one honest input beats two where one is a rumour about the other.
-     */
     /** Whether the illness has reached the stage that leaves a mark (see design/chronic.md). */
     public static boolean isSevere(Player player) {
         CarriedInfection carried = player.getData(ModAttachments.INFECTION);
         return carried.isIll() && carried.revive(KNOWN).stage() == Strain.Stage.SEVERE;
     }
 
+    /**
+     * How hard this body is pushing back.
+     *
+     * <p><strong>Real nutrition now, not a rumour about it.</strong> The first version read
+     * vanilla hunger for both inputs, and an earlier draft of that read rest off the published
+     * vitals instead — which the infection's own symptoms are written into, so being ill made you
+     * tired, being tired made you weaker, and the illness fed on itself. A feedback loop nobody
+     * designed is not emergent behaviour, it is a bug that looks like one.
+     *
+     * <p>Nutrition is real now (design/macronutrients.md): {@link Nutrition#overallSufficiency}
+     * reads three real macronutrient reserves, the scarcest of the three, rather than vanilla
+     * hunger. Rest is still the second input the model wants and the mod does not track it yet;
+     * until it does, one honest input beats two where one is a rumour about the other.
+     */
     public static double immunityOf(Player player) {
-        double fed = player.getFoodData().getFoodLevel() / 20.0;
+        // Real macronutrient sufficiency, not vanilla hunger (design/macronutrients.md §0, §3g) -
+        // "how well fed this body is" means exactly one thing, and this is now it.
+        double fed = Nutrition.overallSufficiency(player);
         // Marrow damage multiplies the rate rather than replacing it, so a damaged body that eats
         // well is still better off than a damaged body that does not - the old lever keeps working,
         // it is just worth less (design/chronic.md).

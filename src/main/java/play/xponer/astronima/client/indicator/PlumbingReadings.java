@@ -354,11 +354,12 @@ public final class PlumbingReadings {
             case CRANKING -> Reading.Band.NOMINAL;
             case CREEPING -> Reading.Band.IDLE;
             case STARVED, BLOCKED, TOO_COLD, UNLIT, UNPRESSURISED, NO_REAGENT, PACKED, NO_ETHYLENE,
-                    NO_FEEDSTOCK_GAS, NO_OXYGEN, NO_ACID_FEEDSTOCK, NOT_READY_TO_DRY -> Reading.Band.WARNING;
-            // Blowing out is advancing, but every step it advances the bed is leaving out the
-            // exhaust — a loss happening now, so it alarms like a ruined workpiece rather than
-            // warning like a passive stall.
-            case SPOILED, BACKPRESSURE, BLOWING_OUT -> Reading.Band.CRITICAL;
+                    NO_FEEDSTOCK_GAS, NO_OXYGEN, NO_ACID_FEEDSTOCK, NOT_READY_TO_DRY,
+                    NEEDS_OXIDIZER, NO_CARBON_DIOXIDE -> Reading.Band.WARNING;
+            // Blowing out and combusting are both advancing, but every step either one advances,
+            // something real is leaving — the bed out the exhaust, the charge up as CO2 — so both
+            // alarm like a ruined workpiece rather than warn like a passive stall.
+            case SPOILED, BACKPRESSURE, BLOWING_OUT, COMBUSTING -> Reading.Band.CRITICAL;
         };
         // The percentage rides along on anything that is stopped mid-batch: "no feed" on a
         // machine holding 80 % of a batch is a different message to "no feed" on an idle one,
