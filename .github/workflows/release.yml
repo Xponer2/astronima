@@ -97,12 +97,36 @@ jobs:
             minor) icon="wrench.png"; label="Minor release" ;;
             patch) icon="sealant_patch.png"; label="Patch release" ;;
           esac
+          echo "icon=$icon" >> "$GITHUB_OUTPUT"
+          echo "label=$label" >> "$GITHUB_OUTPUT"
 
-          icon_url="https://raw.githubusercontent.com/${{ github.repository }}/${{ steps.tag.outputs.name }}/src/main/resources/assets/astronima/textures/item/${icon}"
+      # GitHub's release-body sanitizer strips inline style="" from the <img> tag, so
+      # image-rendering: pixelated never survives to the browser - a 16x16 source
+      # texture then gets the browser's own default (smooth) upscaling and reads as
+      # blurry, not pixel art. Fixed at the file, not the CSS: real nearest-neighbor
+      # resampling (Image.NEAREST, the same tool tools/textures.py already builds every
+      # texture with) makes the shipped icon file itself already crisp at display size,
+      # so nothing depends on a style attribute the sanitizer might drop.
+      - name: Scale the icon with real nearest-neighbor resampling
+        id: scaled_icon
+        run: |
+          python3 -m pip install --quiet --disable-pip-version-check pillow
+          python3 -c "
+          from PIL import Image
+          src = 'src/main/resources/assets/astronima/textures/item/${{ steps.badge.outputs.icon }}'
+          img = Image.open(src).convert('RGBA')
+          scale = 8
+          img.resize((img.width * scale, img.height * scale), Image.NEAREST).save('release-icon.png')
+          "
+          echo "path=release-icon.png" >> "$GITHUB_OUTPUT"
+
+      - name: Write release body
+        run: |
+          icon_url="https://github.com/${{ github.repository }}/releases/download/${{ steps.tag.outputs.name }}/release-icon.png"
           {
-            echo "<img src=\"${icon_url}\" width=\"64\" height=\"64\" style=\"image-rendering: pixelated;\" alt=\"${label}\">"
+            echo "<img src=\"${icon_url}\" width=\"128\" height=\"128\" alt=\"${{ steps.badge.outputs.label }}\">"
             echo ""
-            echo "**${label}**"
+            echo "**${{ steps.badge.outputs.label }}**"
             echo ""
           } > release-body.md
           cat release-body.md
@@ -114,4 +138,6 @@ jobs:
           name: Astronima ${{ steps.tag.outputs.name }}
           body_path: release-body.md
           generate_release_notes: true
-          files: ${{ steps.jar.outputs.path }}
+          files: |
+            ${{ steps.jar.outputs.path }}
+            ${{ steps.scaled_icon.outputs.path }}
